@@ -109,6 +109,8 @@ int 	get_rooms(int i, int i2, t_data *data, t_lines *lines)
 	if ((temp = create_room(data, lines, i)) == NULL)
 		return (-1);
 	i2 = i + 1;
+	if (lines->line[++i] == '+' || lines->line[i--] == '-')
+		i++;
 	while (lines->line[++i] != '\0' && lines->line[i] != ' ')
 	{
 		if (ft_isdigit(lines->line[i]) == 0)
@@ -116,6 +118,8 @@ int 	get_rooms(int i, int i2, t_data *data, t_lines *lines)
 	}
 	temp->x = ft_atoi(&(lines->line[i2]));
 	i2 = i;
+	if (lines->line[++i] == '+' || lines->line[i--] == '-')
+		i++;
 	while (lines->line[++i] != '\0')
 	{
 		if (ft_isdigit(lines->line[i]) == 0)
@@ -324,6 +328,6 @@ int		validator(t_data *data, int fd)
 		return (-1);
 	if (parse(data, &lines) == -1) // lines почистил а строки line  ?
 		return (-1);
-	//сохранить линии которые распечатать->только валидные линии || координаты отрицательные не принимает
+	//сохранить линии которые распечатать->только валидные линии
 	return (0);
 }
