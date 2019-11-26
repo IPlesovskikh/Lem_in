@@ -77,7 +77,7 @@ int		ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines)
 	while (lines->line[i] != '\0')
 		i++;
 	temp = ft_strsub(lines->line, i2, i - i2);
-	if (temp_link->b = check_rooms(data, temp) == -1)
+	if ((temp_link->b = check_rooms(data, temp)) == -1)
 		return (-1);
 	free(temp);
 }

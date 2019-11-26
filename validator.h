@@ -73,5 +73,6 @@ void				*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
 int					ft_atoi(const char *str);
 int					ft_isdigit(int c);
 int					ft_strcmp(const char *s1, const char *s2);
+int					ft_check_comment(t_lines **lines);
 
 #endif //INC_42_LEM_IN_VALIDATOR_H

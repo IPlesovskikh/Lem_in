@@ -14,7 +14,26 @@ static int		check_coordinates(t_room *temp, t_room *check)
 	return (0);
 }
 
-static t_room	*create_room( t_data *data, t_lines *lines, int i)
+static int		allocate_memory_for_room(t_room	**temp, t_data *data)
+{
+	if (*temp)
+	{
+		if (((*temp)->next = malloc(sizeof(t_room))) == NULL)
+			return (-1);
+		(*temp)->next->prev = (*temp);
+		(*temp) = (*temp)->next;
+	}
+	else
+	{
+		if ((data->rooms = malloc(sizeof(t_room))) == NULL)
+			return (-1);
+		(*temp) = data->rooms;
+		(*temp)->prev = NULL;
+	}
+	return (0);
+}
+
+static t_room	*create_room(t_data *data, t_lines *lines, int i)
 {
 	t_room		*temp;
 	t_room		*check;
@@ -23,20 +42,8 @@ static t_room	*create_room( t_data *data, t_lines *lines, int i)
 	temp = data->rooms;
 	while (temp && temp->next != NULL)
 		temp = temp->next;
-	if (temp)
-	{
-		if ((temp->next = malloc(sizeof(t_room))) == NULL)
-			return (NULL);
-		temp->next->prev = temp;
-		temp = temp->next;
-	}
-	else
-	{
-		if ((data->rooms = malloc(sizeof(t_room))) == NULL)
-			return (NULL);
-		temp = data->rooms;
-		temp->prev = NULL;
-	}
+	if (allocate_memory_for_room(&temp, data) == 0)
+		return (NULL);
 	temp->num = num++;
 	temp->next = NULL;
 	temp->name = NULL;
@@ -67,78 +74,44 @@ int 		get_rooms(int i, int i2, t_data *data, t_lines *lines)
 	if (lines->line[++i] == '+' || lines->line[i--] == '-')
 		i++;
 	while (lines->line[++i] != '\0' && lines->line[i] != ' ')
-	{
 		if (ft_isdigit(lines->line[i]) == 0)
 			return (-1);
-	}
 	temp->x = ft_atoi(&(lines->line[i2]));
 	i2 = i;
 	if (lines->line[++i] == '+' || lines->line[i--] == '-')
 		i++;
 	while (lines->line[++i] != '\0')
-	{
 		if (ft_isdigit(lines->line[i]) == 0)
 			return (-1);
-	}
 	temp->y = ft_atoi(&(lines->line[i2]));
-	if (check_coordinates(temp, data->rooms) == -1)
-		return (-1);
-	return (0);
+	return (check_coordinates(temp, data->rooms) == -1 ? -1 : 0);
 }
 
-static int		ft_check_comment(t_lines **lines)
-{
-	int 	i;
-
-	i = 0;
-	while (i == 0)
-	{
-		if ((*lines)->line[0] == '#' && (*lines)->line[1] == '#')
-			return (-1);
-		else if ((*lines)->line[0] == '#')
-		{
-			(*lines) = (*lines)->next;
-		}
-		else
-			i++;
-	}
-	return (0);
-}
-
-int 	get_commande(t_data *data, t_lines **lines)
+int		get_commande(t_data *data, t_lines **lines)
 {
 	t_room		*temp;
+	int			i;
 
 	if (ft_strcmp(&((*lines)->line[2]), "start") == 0)
-	{
-		if (data->start != NULL)
-			return (-1);
-		(*lines) = (*lines)->next;
-		if (ft_check_comment(&(*lines)) == -1)
-			return (-1);
-		if (get_rooms(0, 0, data, *lines) == -1)
-			return (-1);
-		temp = data->rooms;
-		while (temp->next != NULL)
-			temp = temp->next;
-		data->start = temp;
-	}
+		i = 1;
 	else if (ft_strcmp(&((*lines)->line[2]), "end") == 0)
-	{
-		if (data->end != NULL)
-			return (-1);
-		(*lines) = (*lines)->next;
-		if (ft_check_comment(&(*lines)) == -1)
-			return (-1);
-		if (get_rooms(0, 0, data, (*lines)) == -1)
-			return (-1);
-		temp = data->rooms;
-		while (temp->next != NULL)
-			temp = temp->next;
-		data->end = temp;
-	}
+		i = 2;
 	else
 		return (-1);
+	if ((i == 1 && data->start != NULL) || (i == 2 && data->end != NULL))
+		return (-1);
+	(*lines) = (*lines)->next;
+	if (ft_check_comment(&(*lines)) == -1)
+		return (-1);
+	if (get_rooms(0, 0, data, *lines) == -1)
+		return (-1);
+	temp = data->rooms;
+	while (temp->next != NULL)
+		temp = temp->next;
+	if (i == 1)
+		data->start = temp;
+	else
+		data->end = temp;
 	return (0);
 }
 

@@ -4,6 +4,25 @@
 
 #include "validator.h"
 
+int		ft_check_comment(t_lines **lines)
+{
+	int		i;
+
+	i = 0;
+	while (i == 0)
+	{
+		if ((*lines)->line[0] == '#' && (*lines)->line[1] == '#')
+			return (-1);
+		else if ((*lines)->line[0] == '#')
+		{
+			(*lines) = (*lines)->next;
+		}
+		else
+			i++;
+	}
+	return (0);
+}
+
 int		get_ants(t_data	*data, int fd)
 {
 	char	*line;
