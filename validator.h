@@ -56,6 +56,12 @@ typedef struct		s_lines
 }					t_lines;
 
 int		            validator(t_data *data, int fd);
+int					check_links(t_link *link, t_link *temp_link);
+t_link				*ft_create_link(t_link *temp_link, t_data *data);
+int					ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines);
+int					get_links(t_data *data, t_lines *lines);
+int 				get_commande(t_data *data, t_lines **lines);
+int 				get_rooms(int i, int i2, t_data *data, t_lines *lines);
 
 int					get_next_line(const int fd, char **line);
 char				*ft_strjoin(char const *s1, char const *s2);
