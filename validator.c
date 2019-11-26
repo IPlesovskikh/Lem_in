@@ -4,12 +4,12 @@
 
 #include "validator.h"
 
-int		get_ants(t_data	*data)
+int		get_ants(t_data	*data, int fd)
 {
 	char	*line;
 	int 	i;
 
-	get_next_line(0, &line);
+	get_next_line(fd, &line);
 	i = 0;
 	while (line[i] != '\0')
 	{
@@ -22,17 +22,24 @@ int		get_ants(t_data	*data)
 	return (0);
 }
 
-int		get_lines(t_lines *lines)
+int		get_lines(t_lines *lines, int fd)
 {
 	char 	*line;
 
-	while (get_next_line(0, &line) > 0)
+	while (get_next_line(fd, &line) > 0) // -1 ошибка как обработать ?
 	{
-		if ((lines->next = malloc(sizeof(t_lines))) == NULL)
-			return (-1); // free +  + put_error+return
-		lines->next->line = line;
-		lines = lines->next;
+		if (lines->line)
+        {
+            if ((lines->next = malloc(sizeof(t_lines))) == NULL)
+                return (-1); // free +  + put_error+return
+            lines->next->line = line;
+            lines = lines->next;
+        }
+		else
+            lines->line = line;
+        line = NULL;
 	}
+	lines->next = NULL;
 	return (0);
 }
 
@@ -54,12 +61,22 @@ t_room	*create_room( t_data *data, t_lines *lines, int i)
 	static int 	num;
 
 	temp = data->rooms;
-	while (temp->next != NULL)
+	while (temp && temp->next != NULL)
 		temp = temp->next;
-	if ((temp->next = malloc(sizeof(t_room))) == NULL)
-		return (NULL);
-	temp->next->prev = temp;
-	temp = temp->next;
+	if (temp)
+	{
+        if ((temp->next = malloc(sizeof(t_room))) == NULL)
+            return (NULL);
+        temp->next->prev = temp;
+        temp = temp->next;
+    }
+	else
+    {
+        if ((data->rooms = malloc(sizeof(t_room))) == NULL)
+            return (NULL);
+        temp = data->rooms;
+        temp->prev = NULL;
+    }
 	temp->num = num++;
 	temp->next = NULL;
 	temp->name = NULL;
@@ -84,7 +101,7 @@ int 	get_rooms(int i, int i2, t_data *data, t_lines *lines)
 		i++;
 	if (lines->line[i] == '\0')
 		return (-1);
-	if ((temp = create_room(data, lines, i + 1)) == NULL)
+	if ((temp = create_room(data, lines, i)) == NULL)
 		return (-1);
 	i2 = i + 1;
 	while (lines->line[++i] != '\0' && lines->line[i] != ' ')
@@ -94,11 +111,10 @@ int 	get_rooms(int i, int i2, t_data *data, t_lines *lines)
 	}
 	temp->x = ft_atoi(&(lines->line[i2]));
 	i2 = i;
-	while (lines->line[i] != '\0')
+	while (lines->line[++i] != '\0')
 	{
 		if (ft_isdigit(lines->line[i]) == 0)
 			return (-1);
-		i++;
 	}
 	temp->y = ft_atoi(&(lines->line[i2]));
 	if (check_coordinates(temp, data->rooms) == -1)
@@ -110,26 +126,28 @@ int 	get_commande(t_data *data, t_lines *lines)
 {
 	t_room		*temp;
 
-	if (ft_strcmp(&(lines->line[1]), "start") == 0)
+	if (ft_strcmp(&(lines->line[2]), "start") == 0)
 	{
+        if (data->start != NULL)
+            return (-1);
 		lines = lines->next;
 		if (get_rooms(0, 0, data, lines) == -1)
 			return (-1);
 		temp = data->rooms;
 		while (temp->next != NULL)
 			temp = temp->next;
-		if (data->start != NULL)
-			return (-1);
 		data->start = temp;
 	}
-	else if (ft_strcmp(&(lines->line[1]), "end") == 0)
+	else if (ft_strcmp(&(lines->line[2]), "end") == 0)
 	{
+        if (data->end != NULL)
+            return (-1);
 		lines = lines->next;
 		if (get_rooms(0, 0, data, lines) == -1)
 			return (-1);
 		temp = data->rooms;
-		if (data->end != NULL)
-			return (-1);
+        while (temp->next != NULL)
+            temp = temp->next;
 		data->end = temp;
 	}
 	else
@@ -194,6 +212,7 @@ int		ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines)
 	int 	i;
 	int 	i2;
 
+	i = 0;
 	while (lines->line[i] != '\0' && lines->line[i] != '-')
 		i++;
 	if (lines->line[i] == '\0')
@@ -235,20 +254,25 @@ int		parse(t_data *data, t_lines *lines)
 	int 	i;
 
 	i = 0;
-	while (lines || i == 0)
+	while (lines && i == 0)
 	{
 		if (lines->line[0] == '#' && lines->line[1] == '#')
 		{
 			if (get_commande(data, lines) == -1)
 				i = -2;
-			lines = lines->next;
+			else
+            {
+                lines = lines->next;
+                lines = lines->next; // не здесь а в гет команд есть защита на отсутствие ->next ?
+            }
 		}
 		else if (lines->line[0] != '#')
 		{
 			if (get_rooms(0, 0, data, lines) == -1)
 				i = -1;
+			else
+                lines = lines->next;
 		}
-		lines = lines->next;
 	}
 	if (i == -2 || data->rooms == NULL)
 		return (-1);
@@ -259,17 +283,17 @@ int		parse(t_data *data, t_lines *lines)
 	return (0);
 }
 
-int		validator(t_data *data)
+int		validator(t_data *data, int fd)
 {
 	t_lines		lines;
 
-	if (get_ants(data) == -1)
+	if (get_ants(data, fd) == -1)
 		return (-1);
 	lines.line = NULL;
-	lines.next = NULL;
-	if (get_lines(&lines) == -1)
+	lines.line = NULL;
+	if (get_lines(&lines, fd) == -1)
 		return (-1);
-	if (parse(data, &lines) == -1)
+	if (parse(data, &lines) == -1) // lines почистил а строки line  ?
 		return (-1);
 	//сохранить линии которые распечатать->только валидные линии
 	return (0);

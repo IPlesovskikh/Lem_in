@@ -13,7 +13,7 @@
 # include <sys/stat.h>
 # include <sys/uio.h>
 
-# define BUFF_SIZE 10
+# define BUFF_SIZE 100
 
 typedef struct		s_room
 {
@@ -55,6 +55,8 @@ typedef struct		s_lines
 	struct s_lines	*next;
 }					t_lines;
 
+int		            validator(t_data *data, int fd);
+
 int					get_next_line(const int fd, char **line);
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlen(const char *s);
@@ -62,7 +64,6 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 char				*ft_strchr(const char *s, int c);
 void				*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
-int					validator(t_data *data);
 int					ft_atoi(const char *str);
 int					ft_isdigit(int c);
 int					ft_strcmp(const char *s1, const char *s2);
