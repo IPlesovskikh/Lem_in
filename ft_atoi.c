@@ -29,8 +29,8 @@ static long int	conversion_negative(const char *str, int i)
 	while (i >= len)
 	{
 		n = n + (str[i] - '0') * y;
-		if (n > 223372036854775806 ||
-			(n == 223372036854775806 && str[i] == 9))
+		if (n > 147483648 ||
+			(n == 147483648 && str[i] == 2))
 			return (0);
 		i--;
 		y = 10 * y;
@@ -58,9 +58,9 @@ static long int	conversion_positive(const char *str, int i)
 	while (i >= len && str[i] != '+')
 	{
 		n = n + (str[i] - '0') * y;
-		if (n > 223372036854775807 ||
-			(n == 223372036854775807 && str[i] == 9))
-			return (-1);
+		if (n > 147483648 ||
+			(n == 147483648 && str[i] == 2))
+			return (0);
 		i--;
 		y = 10 * y;
 	}

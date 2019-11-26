@@ -21,7 +21,8 @@ int		get_ants(t_data	*data, int fd)
 			return(-1); // free + put_error+return
 		i++;
 	}
-	data->ants = ft_atoi(line); // чекнуть на переполнение как в пушсвапе == валидность цифры иначе return - 1
+	if ((data->ants = ft_atoi(line)) == 0 && line[0] != '0' && line[1] != '\0')
+		return (-1);
 	free(line);
 	return (0);
 }
