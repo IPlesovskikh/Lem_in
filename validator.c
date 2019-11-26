@@ -302,7 +302,7 @@ int		parse(t_data *data, t_lines *lines)
 		else
             lines = lines->next;
 	}
-	if (i == -2 || data->rooms == NULL)
+	if (i == -2 || data->rooms == NULL || data->start == NULL || data->end == NULL)
 		return (-1);
 	if (get_links(data, lines) == -1) // тут -1 не значит конец, если ряд условий будет соблюден то можно продолжать(как определить что начало и конец хотя бы один путь имеют ?)?
 		return (-1);
