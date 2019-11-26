@@ -10,6 +10,8 @@ int		get_ants(t_data	*data, int fd)
 	int 	i;
 
 	get_next_line(fd, &line);
+	if (line == NULL)
+		return (-1);
 	i = 0;
 	while (line[i] != '\0')
 	{
@@ -122,28 +124,51 @@ int 	get_rooms(int i, int i2, t_data *data, t_lines *lines)
 	return (0);
 }
 
-int 	get_commande(t_data *data, t_lines *lines)
+int		ft_check_comment(t_lines **lines)
+{
+	int 	i;
+
+	i = 0;
+	while (i == 0)
+	{
+		if ((*lines)->line[0] == '#' && (*lines)->line[1] == '#')
+			return (-1);
+		else if ((*lines)->line[0] == '#')
+		{
+			(*lines) = (*lines)->next;
+		}
+		else
+			i++;
+	}
+    return (0);
+}
+
+int 	get_commande(t_data *data, t_lines **lines)
 {
 	t_room		*temp;
 
-	if (ft_strcmp(&(lines->line[2]), "start") == 0)
+	if (ft_strcmp(&((*lines)->line[2]), "start") == 0)
 	{
-        if (data->start != NULL)
+	    if (data->start != NULL)
             return (-1);
-		lines = lines->next;
-		if (get_rooms(0, 0, data, lines) == -1)
+		(*lines) = (*lines)->next;
+		if (ft_check_comment(&(*lines)) == -1)
+			return (-1);
+		if (get_rooms(0, 0, data, *lines) == -1)
 			return (-1);
 		temp = data->rooms;
 		while (temp->next != NULL)
 			temp = temp->next;
 		data->start = temp;
 	}
-	else if (ft_strcmp(&(lines->line[2]), "end") == 0)
+	else if (ft_strcmp(&((*lines)->line[2]), "end") == 0)
 	{
         if (data->end != NULL)
             return (-1);
-		lines = lines->next;
-		if (get_rooms(0, 0, data, lines) == -1)
+		(*lines) = (*lines)->next;
+		if (ft_check_comment(&(*lines)) == -1)
+			return (-1);
+		if (get_rooms(0, 0, data, (*lines)) == -1)
 			return (-1);
 		temp = data->rooms;
         while (temp->next != NULL)
@@ -260,13 +285,10 @@ int		parse(t_data *data, t_lines *lines)
 	{
 		if (lines->line[0] == '#' && lines->line[1] == '#')
 		{
-			if (get_commande(data, lines) == -1)
-				i = -2;
+		    if (get_commande(data, &lines) == -1)
+				i = -1;
 			else
-            {
                 lines = lines->next;
-                lines = lines->next; // не здесь а в гет команд есть защита на отсутствие ->next ?
-            }
 		}
 		else if (lines->line[0] != '#')
 		{
@@ -275,8 +297,10 @@ int		parse(t_data *data, t_lines *lines)
 			else
                 lines = lines->next;
 		}
+		else
+            lines = lines->next;
 	}
-	if (i == -2 || data->rooms == NULL)
+	if (i == -1 || data->rooms == NULL)
 		return (-1);
 	if (get_links(data, lines) == -1) // тут -1 не значит конец, если ряд условий будет соблюден то можно продолжать(как определить что начало и конец хотя бы один путь имеют ?)?
 		return (-1);
