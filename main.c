@@ -17,7 +17,7 @@ int main()
     printf("Hello, World!\n");
     fd = open("../mapp", O_RDONLY);
     fill_data(&data);
-    validator(&data, fd);
+    validator(&data, fd); // дата удалить // универсальная функция + посмотреть случаи когда не успели записать в дата
     close(fd);
     printf("Hello, World!\n");
     return 0;

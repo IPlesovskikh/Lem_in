@@ -35,7 +35,7 @@ int		get_ants(t_data	*data, int fd)
 	while (line[i] != '\0')
 	{
 		if (ft_isdigit(line[i]) == 0)
-			return(-1); // free + put_error+return
+			return(-1); // line отфришить
 		i++;
 	}
 	if ((data->ants = ft_atoi(line)) == 0 && line[0] != '0' && line[1] != '\0')
@@ -48,12 +48,12 @@ int		get_lines(t_lines *lines, int fd)
 {
 	char 	*line;
 
-	while (get_next_line(fd, &line) > 0) // -1 ошибка как обработать ?
+	while (get_next_line(fd, &line) > 0) // -1 ошибка как обработать ? отшрифить line не забыть
 	{
 		if (lines->line)
         {
             if ((lines->next = malloc(sizeof(t_lines))) == NULL)
-                return (-1); // free +  + put_error+return
+                return (-1); // line не забыть отфришить
             lines->next->line = line;
             lines = lines->next;
         }
@@ -101,9 +101,9 @@ int		validator(t_data *data, int fd)
 	lines.line = NULL;
 	lines.line = NULL;
 	if (get_lines(&lines, fd) == -1)
-		return (-1);
+		return (-1); // lines  удалить
 	if (parse(data, &lines, 0) == -1) // lines почистил а строки line  ?
-		return (-1);
-	//сохранить линии которые распечатать->только валидные линии
+		return (-1); // lines удалить
+	//сохранить линии которые распечатать->только валидные линии(? если реализую) и без коментов. записать все в одну строку и вывести потом ?
 	return (0);
 }
