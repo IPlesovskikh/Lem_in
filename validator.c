@@ -166,11 +166,12 @@ int		check_rooms(t_data *data, t_lines *lines, char *temp)
 	{
 		if (ft_strcmp(check->name, temp) == 0)
 			i = 1;
-		check = check->next;
+		else
+		    check = check->next;
 	}
 	if (i == 0)
 		return (-1);
-	return (0);
+	return (check->num);
 }
 
 int		check_links(t_link *link, t_link *temp_link)
@@ -178,7 +179,7 @@ int		check_links(t_link *link, t_link *temp_link)
 	t_link	*temp;
 
 	temp = link;
-	while (temp)
+	while (temp->next)
 	{
 		if (((temp->a && temp_link->a) && (temp->b && temp_link->b)) ||
 				((temp->a && temp_link->b) && (temp->b && temp_link->a)))
@@ -203,6 +204,7 @@ t_link 	*ft_create_link(t_link *temp_link, t_data *data)
 			return (NULL);
 		temp_link = data->links;
 	}
+	temp_link->next = NULL;
 	return (temp_link);
 }
 
