@@ -13,6 +13,8 @@ int		get_ants(t_data	*data, int fd)
 	if (line == NULL)
 		return (-1);
 	i = 0;
+	if (line[i] == '+' || line[i] == '-')
+		i++;
 	while (line[i] != '\0')
 	{
 		if (ft_isdigit(line[i]) == 0)
@@ -286,7 +288,7 @@ int		parse(t_data *data, t_lines *lines)
 		if (lines->line[0] == '#' && lines->line[1] == '#')
 		{
 		    if (get_commande(data, &lines) == -1)
-				i = -1;
+				i = -2;
 			else
                 lines = lines->next;
 		}
@@ -300,7 +302,7 @@ int		parse(t_data *data, t_lines *lines)
 		else
             lines = lines->next;
 	}
-	if (i == -1 || data->rooms == NULL)
+	if (i == -2 || data->rooms == NULL)
 		return (-1);
 	if (get_links(data, lines) == -1) // тут -1 не значит конец, если ряд условий будет соблюден то можно продолжать(как определить что начало и конец хотя бы один путь имеют ?)?
 		return (-1);
@@ -313,7 +315,7 @@ int		validator(t_data *data, int fd)
 {
 	t_lines		lines;
 
-	if (get_ants(data, fd) == -1)
+	if (get_ants(data, fd) == -1 || data->ants < 1)
 		return (-1);
 	lines.line = NULL;
 	lines.line = NULL;
@@ -321,6 +323,6 @@ int		validator(t_data *data, int fd)
 		return (-1);
 	if (parse(data, &lines) == -1) // lines почистил а строки line  ?
 		return (-1);
-	//сохранить линии которые распечатать->только валидные линии
+	//сохранить линии которые распечатать->только валидные линии || координаты отрицательные не принимает
 	return (0);
 }
