@@ -42,7 +42,7 @@ static t_room	*create_room(t_data *data, t_lines *lines, int i)
 	temp = data->rooms;
 	while (temp && temp->next != NULL)
 		temp = temp->next;
-	if (allocate_memory_for_room(&temp, data) == 0)
+	if (allocate_memory_for_room(&temp, data) == -1)
 		return (NULL);
 	temp->num = num++;
 	temp->next = NULL;

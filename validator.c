@@ -14,9 +14,7 @@ int		ft_check_comment(t_lines **lines)
 		if ((*lines)->line[0] == '#' && (*lines)->line[1] == '#')
 			return (-1);
 		else if ((*lines)->line[0] == '#')
-		{
 			(*lines) = (*lines)->next;
-		}
 		else
 			i++;
 	}
