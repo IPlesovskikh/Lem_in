@@ -21,6 +21,9 @@ typedef struct		s_room
 	char			*name;
 	int 			x;
 	int 			y;
+	int 			level;
+	int 			input;
+	int 			output;
 	struct s_room 	*next;
 	struct s_room 	*prev;
 }					t_room;
@@ -40,6 +43,7 @@ typedef struct		s_data
 	t_room			*rooms;
 	t_room			*start;
 	t_room			*end;
+	int				total_rooms;
 }					t_data;
 
 typedef struct		s_list
@@ -74,5 +78,6 @@ int					ft_atoi(const char *str);
 int					ft_isdigit(int c);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_check_comment(t_lines **lines);
+int					create_array_rooms(t_data *data, t_room ***array);
 
 #endif //INC_42_LEM_IN_VALIDATOR_H

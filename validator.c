@@ -3,6 +3,7 @@
 //
 
 #include "validator.h"
+#include <stdio.h>
 
 int		ft_check_comment(t_lines **lines)
 {
@@ -95,6 +96,8 @@ int		parse(t_data *data, t_lines *lines, int i)
 int		validator(t_data *data, int fd)
 {
 	t_lines		lines;
+	t_room		**array;
+	int 		i;
 
 	if (get_ants(data, fd) == -1 || data->ants < 1)
 		return (-1);
@@ -104,6 +107,16 @@ int		validator(t_data *data, int fd)
 		return (-1); // lines  удалить
 	if (parse(data, &lines, 0) == -1) // lines почистил а строки line  ?
 		return (-1); // lines удалить
+	array = NULL;
+	if (create_array_rooms(data, &array) == -1)
+		return (-1);
+	i = 0;
+	while (array[i])
+	{
+		printf("%i", array[i]->num);
+		i++;
+	}
 	//сохранить линии которые распечатать->только валидные линии(? если реализую) и без коментов. записать все в одну строку и вывести потом ?
+	// start and end 0 and max int
 	return (0);
 }

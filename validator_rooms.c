@@ -45,6 +45,7 @@ static t_room	*create_room(t_data *data, t_lines *lines, int i)
 	if (allocate_memory_for_room(&temp, data) == -1)
 		return (NULL);
 	temp->num = num++;
+	data->total_rooms = num;
 	temp->next = NULL;
 	temp->name = NULL;
 	temp->x = 0;
@@ -114,4 +115,3 @@ int		get_commande(t_data *data, t_lines **lines)
 		data->end = temp;
 	return (0);
 }
-
