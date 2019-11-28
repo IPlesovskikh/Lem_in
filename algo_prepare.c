@@ -1,7 +1,7 @@
 
 #include "validator.h"
 
-void	algo_prepare_graph(t_data *data, t_room **array)
+static void	del_useless_links(t_data *data, t_room **array)
 {
 	int 	i;
 	int 	max;
@@ -27,6 +27,12 @@ void	algo_prepare_graph(t_data *data, t_room **array)
 		}
 		i++;
 	}
+}
+
+void	algo_prepare_graph(t_data *data, t_room **array)
+{
+	del_useless_links(data, array);
+	
 }
 
 
