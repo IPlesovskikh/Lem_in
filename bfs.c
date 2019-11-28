@@ -13,8 +13,13 @@ void		ft_put_child(t_child *temp_child, t_room **array, int **queue, int i)
 		y++;
 	while (temp_child)
 	{
-		array[temp_child->num]->level = i;
-		queue[i][y++] = temp_child->num;
+		if (array[temp_child->num]->level == 2147483647)
+			queue[i][y++] = temp_child->num;
+		else if (array[temp_child->num]->level == -1)
+		{
+			array[temp_child->num]->level = i;
+			queue[i][y++] = temp_child->num;
+		}
 		temp_child = temp_child->next;
 	}
 	queue[i][y] = -1;
@@ -28,7 +33,7 @@ int				bfs(t_data *data, t_room **array)
 	int 		y;
 
 	queue = (int**)malloc(sizeof(int*) * data->total_rooms);
-	i = data->total_rooms;
+	i = 0;
 	while (i < data->total_rooms)
 	{
 		queue[i] = (int*)malloc(sizeof(int) * data->total_rooms);
@@ -38,12 +43,17 @@ int				bfs(t_data *data, t_room **array)
 	temp_room->level = 0;
 	data->end->level = 2147483647;
 	i = 0;
+	y = 0;
 	while (temp_room->level != 2147483647)
 	{
-		y = 0;
 		ft_put_child(temp_room->child, array, queue, i + 1);
-
-		temp_room = array[queue[i][]]
+		if (queue[i][++y] != -1 && i != 0)
+			temp_room = array[queue[i][y]];
+		else
+		{
+			y = 0;
+			temp_room = array[queue[++i][0]];
+		}
 	}
 	return (0);
 }
