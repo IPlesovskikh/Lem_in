@@ -1,7 +1,7 @@
 
 #include "validator.h"
 
-static void	del_useless_links(t_data *data, t_room **array)
+static void	del_same_lvl(t_data *data, t_room **array)
 {
 	int 	i;
 	int 	max;
@@ -29,10 +29,21 @@ static void	del_useless_links(t_data *data, t_room **array)
 	}
 }
 
-void	algo_prepare_graph(t_data *data, t_room **array)
+void		algo_prepare_graph(t_data *data, t_room **array)
 {
-	del_useless_links(data, array);
-	
+	t_child	*child;
+	t_child	*temp;
+
+	del_same_lvl(data, array);
+	child = array[data->end->num]->child;
+	while (child->next != NULL)
+	{
+		temp = child->next;
+		free(child);
+		child = child->next;
+	}
+	free(child);
+	array[data->end->num]->child = NULL;
 }
 
 
