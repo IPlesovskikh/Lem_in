@@ -27,7 +27,7 @@ int main()
 	fill_array_rooms(&data, array);
 	if (bfs(&data, array) == -1) // когда определить, когда вообще нет пути ?
 		return (-1);
-	algo_prepare_graph(&data, array); // иногда проскакивает сига add_child
+	algo_prepare_graph(&data, array); // иногда проскакивает сига add_child while (child->next != NULL) child = child->next;
 	// когда есть лвл не меняю но возможно надо сравнивать лвл, нет ?
     printf("Hello, World!\n");
     return 0;

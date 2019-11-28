@@ -1,7 +1,7 @@
 
 #include "validator.h"
 
-static void	del_same_lvl(t_data *data, t_room **array)
+static void	del_same_lvl_and_get_directions(t_data *data, t_room **array)
 {
 	int 	i;
 	int 	max;
@@ -15,9 +15,20 @@ static void	del_same_lvl(t_data *data, t_room **array)
 		child = array[i]->child;
 		while (child)
 		{
-			if (array[i]->level == array[child->num]->level)
+			if (array[i]->level >= array[child->num]->level)
 			{
-				child->prev->next = child->next;
+				if (child->prev)
+				{
+					child->prev->next = child->next;
+					if (child->next)
+						child->next->prev = child->prev->next;
+				}
+				else
+				{
+					array[i]->child = child->next;
+					if (array[i]->child)
+						array[i]->child->prev = NULL;
+				}
 				temp = child->next;
 				free(child);
 				child = temp;
@@ -29,21 +40,34 @@ static void	del_same_lvl(t_data *data, t_room **array)
 	}
 }
 
+static void	calculate_input_and_output(t_data *data, t_room **array)
+{
+	int 	i;
+	int 	max;
+	t_child	*child;
+
+	i = 0;
+	max = data->total_rooms;
+	while (i < max)
+	{
+		if (array[i]->level != -1)
+		{
+			child = array[i]->child;
+			while (child)
+			{
+				array[i]->output++;
+				array[child->num]->input++;
+				child = child->next;
+			}
+		}
+		i++;
+	}
+}
+
 void		algo_prepare_graph(t_data *data, t_room **array)
 {
-	t_child	*child;
-	t_child	*temp;
-
-	del_same_lvl(data, array);
-	child = array[data->end->num]->child;
-	while (child->next != NULL)
-	{
-		temp = child->next;
-		free(child);
-		child = child->next;
-	}
-	free(child);
-	array[data->end->num]->child = NULL;
+	del_same_lvl_and_get_directions(data, array);
+	calculate_input_and_output(data, array);
 }
 
 
