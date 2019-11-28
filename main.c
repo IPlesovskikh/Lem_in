@@ -24,6 +24,7 @@ int main()
 	array = NULL;
 	if (create_array_rooms(&data, &array) == -1)
 		return (-1);
+	fill_array_rooms(&data, array);
 	if (bfs(&data, array) == -1)
 		return (-1);
     printf("Hello, World!\n");

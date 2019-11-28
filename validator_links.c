@@ -11,8 +11,8 @@ int		check_links(t_link *link, t_link *temp_link)
 	temp = link;
 	while (temp->next)
 	{
-		if (((temp->a && temp_link->a) && (temp->b && temp_link->b)) ||
-			((temp->a && temp_link->b) && (temp->b && temp_link->a)))
+		if (((temp->a == temp_link->a) && (temp->b == temp_link->b)) ||
+			((temp->a == temp_link->b) && (temp->b == temp_link->a)))
 			return (-1);
 		temp = temp->next;
 	}
@@ -26,7 +26,7 @@ t_link 	*ft_create_link(t_link *temp_link, t_data *data)
 		if ((temp_link->next = malloc(sizeof(t_link))) == NULL)
 			return (NULL);
 		temp_link->next->prev = temp_link;
-		temp_link = data->links->next;
+		temp_link = temp_link->next;
 	}
 	else
 	{

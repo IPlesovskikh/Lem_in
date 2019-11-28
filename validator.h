@@ -15,6 +15,13 @@
 
 # define BUFF_SIZE 100
 
+
+typedef struct		s_child
+{
+	int 			num;
+	struct s_child 	*next;
+}					t_child;
+
 typedef struct		s_room
 {
 	int 			num;
@@ -25,7 +32,7 @@ typedef struct		s_room
 	int 			input;
 	int 			output;
 	struct s_room 	*next;
-	struct s_room 	*child;
+	t_child 		*child;
 }					t_room;
 
 typedef	struct		s_link
@@ -67,6 +74,7 @@ int					get_links(t_data *data, t_lines *lines);
 int 				get_commande(t_data *data, t_lines **lines);
 int 				get_rooms(int i, int i2, t_data *data, t_lines *lines);
 int					bfs(t_data *data, t_room **array);
+void				fill_array_rooms(t_data *data, t_room **array);
 
 int					get_next_line(const int fd, char **line);
 char				*ft_strjoin(char const *s1, char const *s2);
