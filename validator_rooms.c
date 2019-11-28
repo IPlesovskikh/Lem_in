@@ -20,7 +20,7 @@ static int		allocate_memory_for_room(t_room	**temp, t_data *data)
 	{
 		if (((*temp)->next = malloc(sizeof(t_room))) == NULL)
 			return (-1);
-		(*temp)->next->prev = (*temp);
+		(*temp)->next->child = (*temp);
 		(*temp) = (*temp)->next;
 	}
 	else
@@ -28,7 +28,7 @@ static int		allocate_memory_for_room(t_room	**temp, t_data *data)
 		if ((data->rooms = malloc(sizeof(t_room))) == NULL)
 			return (-1);
 		(*temp) = data->rooms;
-		(*temp)->prev = NULL;
+		(*temp)->child = NULL;
 	}
 	return (0);
 }
@@ -50,6 +50,10 @@ static t_room	*create_room(t_data *data, t_lines *lines, int i)
 	temp->name = NULL;
 	temp->x = 0;
 	temp->y = 0;
+	temp->level = -1;
+	temp->input = 0;
+	temp->output = 0;
+	temp->child = NULL;
 	temp->name = ft_strsub(lines->line, 0, i);
 	check = data->rooms;
 	while (check->num != temp->num)

@@ -13,12 +13,19 @@ int main()
 {
     t_data  data;
     int     fd;
+	t_room		**array;
 
     printf("Hello, World!\n");
     fd = open("../mapp", O_RDONLY);
     fill_data(&data);
-    validator(&data, fd); // дата удалить // универсальная функция + посмотреть случаи когда не успели записать в дата
+    if (validator(&data, fd) == -1)
+    	return (-1);// дата удалить // универсальная функция + посмотреть случаи когда не успели записать в дата
     close(fd);
+	array = NULL;
+	if (create_array_rooms(&data, &array) == -1)
+		return (-1);
+	if (bfs(&data, array) == -1)
+		return (-1);
     printf("Hello, World!\n");
     return 0;
 }

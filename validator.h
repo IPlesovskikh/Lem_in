@@ -25,7 +25,7 @@ typedef struct		s_room
 	int 			input;
 	int 			output;
 	struct s_room 	*next;
-	struct s_room 	*prev;
+	struct s_room 	*child;
 }					t_room;
 
 typedef	struct		s_link
@@ -66,6 +66,7 @@ int					ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines);
 int					get_links(t_data *data, t_lines *lines);
 int 				get_commande(t_data *data, t_lines **lines);
 int 				get_rooms(int i, int i2, t_data *data, t_lines *lines);
+int					bfs(t_data *data, t_room **array);
 
 int					get_next_line(const int fd, char **line);
 char				*ft_strjoin(char const *s1, char const *s2);
