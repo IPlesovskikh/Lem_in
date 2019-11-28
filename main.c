@@ -25,8 +25,9 @@ int main()
 	if (create_array_rooms(&data, &array) == -1)
 		return (-1);
 	fill_array_rooms(&data, array);
-	if (bfs(&data, array) == -1)
+	if (bfs(&data, array) == -1) // когда определить, когда вообще нет пути ?
 		return (-1);
+	algo_prepare_graph(&data, array);
     printf("Hello, World!\n");
     return 0;
 }

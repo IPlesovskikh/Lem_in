@@ -26,6 +26,7 @@ void		add_child(int parent, t_room **array, int children)
 	{
 		array[parent]->child = (t_child*)malloc(sizeof(t_child));
 		child = array[parent]->child;
+		child->prev = NULL;
 	}
 	else
 	{
@@ -33,6 +34,7 @@ void		add_child(int parent, t_room **array, int children)
 		while (child->next != NULL)
 			child = child->next;
 		child->next = (t_child*)malloc(sizeof(t_child));
+		child->next->prev = child;
 		child = child->next;
 	}
 	child->num = children;

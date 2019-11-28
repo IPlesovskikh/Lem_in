@@ -20,6 +20,7 @@ typedef struct		s_child
 {
 	int 			num;
 	struct s_child 	*next;
+	struct s_child 	*prev;
 }					t_child;
 
 typedef struct		s_room
@@ -75,6 +76,7 @@ int 				get_commande(t_data *data, t_lines **lines);
 int 				get_rooms(int i, int i2, t_data *data, t_lines *lines);
 int					bfs(t_data *data, t_room **array);
 void				fill_array_rooms(t_data *data, t_room **array);
+void				algo_prepare_graph(t_data *data, t_room **array);
 
 int					get_next_line(const int fd, char **line);
 char				*ft_strjoin(char const *s1, char const *s2);
