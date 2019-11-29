@@ -54,6 +54,7 @@ static t_room	*create_room(t_data *data, t_lines *lines, int i)
 	temp->input = 0;
 	temp->output = 0;
 	temp->child = NULL;
+	temp->parent = NULL;
 	temp->name = ft_strsub(lines->line, 0, i);
 	check = data->rooms;
 	while (check->num != temp->num)

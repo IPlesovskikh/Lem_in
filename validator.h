@@ -34,6 +34,7 @@ typedef struct		s_room
 	int 			output;
 	struct s_room 	*next;
 	t_child 		*child;
+	t_child 		*parent;
 }					t_room;
 
 typedef	struct		s_link
