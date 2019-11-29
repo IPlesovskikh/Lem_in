@@ -1,8 +1,10 @@
 
 #include "validator.h"
 
-static void	del_same_lvl(t_child	**child, t_child **temp, t_room **array, int i)
+static void	del_child_or_parent(t_child	**child, t_room **array, int i)
 {
+	t_child		*temp;
+
 	if ((*child)->prev)
 	{
 		(*child)->prev->next = (*child)->next;
@@ -15,12 +17,12 @@ static void	del_same_lvl(t_child	**child, t_child **temp, t_room **array, int i)
 		if (array[i]->child)
 			array[i]->child->prev = NULL;
 	}
-	(*temp) = (*child)->next;
+	temp = (*child)->next;
 	free(*child);
-	(*child) = (*temp);
+	(*child) = temp;
 }
 
-static void	get_direction(t_child **child, t_child **temp, t_room **array, int i)
+static void	get_direction(t_child **child, t_room **array, int i)
 {
 	t_child	*parent;
 
@@ -48,7 +50,6 @@ static void	del_same_lvl_and_get_directions(t_data *data, t_room **array)
 	int 	i;
 	int 	max;
 	t_child	*child;
-	t_child	*temp;
 
 	i = 0;
 	max = data->total_rooms;
@@ -58,11 +59,11 @@ static void	del_same_lvl_and_get_directions(t_data *data, t_room **array)
 		while (child)
 		{
 			if (array[i]->level == array[child->num]->level)
-				del_same_lvl(&child, &temp, array, i);
+				del_child_or_parent(&child, array, i);
 			else if (array[i]->level > array[child->num]->level)
 			{
-				get_direction(&child, &temp, array, i);
-				del_same_lvl(&child, &temp, array, i);
+				get_direction(&child, array, i);
+				del_child_or_parent(&child, array, i);
 			}
 			else
 				child = child->next;
@@ -110,18 +111,21 @@ void		delete_no_one_link(t_data *data, t_room **array)
 		while (child && array[child->num]->num != data->end->num &&
 						  array[child->num]->num != data->start->num)
 		{
-			if (array[child->num]->input == 0 ||
-				array[child->num]->output == 0)
+			if (array[child->num]->output == 0)
 			{
+				del_child_or_parent(&(array[child->num]->parent), array, child->num);
+				array[child->num]->input--;
+				del_child_or_parent(&child, array, i);
+				array[i]->output--;
+				/*
 				temp = (child->next) ? child->next : NULL;
 				if (child->prev)
 					child->prev->next = temp;
 				else if (!(child->prev))
 					array[child->num]->child = temp;
-				array[child->num]->input--;
-				array[i]->output--;
 				free(child);
 				child = (temp) ? child : NULL;
+				 */
 			}
 			else
 				child = child->next;
