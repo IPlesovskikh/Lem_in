@@ -197,19 +197,18 @@ void		delete_fork(t_room **array, int i, t_child *parent)
 	}
 }
 
-void		del_input_forks(t_data *data, t_room **array)
+void		del_input_forks(t_data *data, t_room **array, int i)
 {
-	int 	i;
 	int 	max;
 	t_child	*parent;
 	int 	status;
 
-	i = 0;
 	max = data->total_rooms;
 	status = 0;
 	while (++i < max)
 	{
-		if (array[i]->num != data->end->num && array[i]->input > 1)
+		if (array[i]->num != data->end->num && array[i]->num !=
+				data->start->num && array[i]->input > 1)
 		{
 			parent = array[i]->parent;
 			while (status == 0 && parent)
@@ -234,8 +233,7 @@ void		algo_prepare_graph(t_data *data, t_room **array)
 	del_no_lvl(data, array);
 	calculate_input_and_output(data, array);
 	delete_no_one_link(data, array);
-	//rooms 6 7 8 2 inputs ; room 9 3 outputs 2 inputs и instead room 4 we have room 10 as child
 	// считать инпуты старта надо ? может заранее удалить все?
-	del_input_forks(data, array);
+	del_input_forks(data, array, 0);
 }
 
