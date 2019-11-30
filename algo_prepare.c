@@ -10,14 +10,15 @@ static void	del_child_or_parent(t_child	**child, t_room **array, int i)
 		(*child)->prev->next = (*child)->next;
 		if ((*child)->next)
 			(*child)->next->prev = (*child)->prev->next;
+		temp = (*child)->next;
 	}
 	else
 	{
 		array[i]->child = (*child)->next;
 		if (array[i]->child)
 			array[i]->child->prev = NULL;
+		temp = array[i]->child;
 	}
-	temp = (*child)->next;
 	free(*child);
 	(*child) = temp;
 }
@@ -87,10 +88,8 @@ static void	del_no_lvl(t_data *data, t_room **array)
 			child = array[i]->child;
 			while (child)
 			{
-				del_child_or_parent(&(array[child->num]->parent), array, child->num);
-				array[child->num]->input--;
+				del_child_or_parent(&(array[child->num]->child), array, child->num);
 				del_child_or_parent(&child, array, i);
-				array[i]->output--;
 			}
 		}
 		i++;
@@ -144,7 +143,7 @@ static void		delete_no_one_link(t_data *data, t_room **array)
 		}
 	}
 }
-
+/*
 void		del_input_forks(t_data *data, t_room **array)
 {
 	int 	i;
@@ -185,7 +184,7 @@ void		del_input_forks(t_data *data, t_room **array)
 		}
 	}
 }
-
+*/
 void		algo_prepare_graph(t_data *data, t_room **array)
 {
 	del_same_lvl_and_get_directions(data, array);
@@ -194,7 +193,7 @@ void		algo_prepare_graph(t_data *data, t_room **array)
 	delete_no_one_link(data, array);
 	//rooms 6 7 8 2 inputs ; room 9 3 outputs 2 inputs и instead room 4 we have room 10 as child
 	// считать инпуты старта надо ? может заранее удалить все?
-	del_input_forks(data, array);
+	//del_input_forks(data, array);
 }
 
 
