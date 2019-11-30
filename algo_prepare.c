@@ -19,7 +19,10 @@ static void	del_child_or_parent(t_child	**child, int y, t_room **array, int i)
 	}
 	else
 	{
-		array[i]->child = temp->next;
+		if (array[i]->child && array[i]->child->num == y)
+			array[i]->child = temp->next;
+		else
+			array[i]->parent = temp->next;
 		if (array[i]->child)
 			array[i]->child->prev = NULL;
 		temp = array[i]->child;
