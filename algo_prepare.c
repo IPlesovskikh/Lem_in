@@ -206,7 +206,7 @@ void		del_input_forks(t_data *data, t_room **array)
 	status = 0;
 	while (++i < max)
 	{
-		if (array[i]->input > 1)
+		if (array[i]->num != data->end->num && array[i]->input > 1)
 		{
 			parent = array[i]->parent;
 			while (status == 0 && parent)
