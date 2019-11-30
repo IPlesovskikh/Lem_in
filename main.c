@@ -13,7 +13,10 @@ int main()
 {
     t_data  data;
     int     fd;
-	t_room		**array;
+	t_room	**array;
+	int 	**paths;
+	int 	y;
+	int 	i;
 
     printf("Hello, World!\n");
     fd = open("../mapp", O_RDONLY);
@@ -27,8 +30,22 @@ int main()
 	fill_array_rooms(&data, array);
 	if (bfs(&data, array) == -1) // когда определить, когда вообще нет пути ?
 		return (-1);
-	algo_prepare_graph(&data, array); // иногда проскакивает сига add_child while (child->next != NULL) child = child->next;
-	// когда есть лвл не меняю но возможно надо сравнивать лвл, нет ?
-    printf("Hello, World!\n");
+	algo_prepare_graph(&data, array);
+	paths = (int**)malloc(sizeof(int*) * (data.end->output + 1));
+	paths[data.end->output] = NULL;
+	get_path(&data, array, paths);
+	y = 0;
+    while (paths[y] != NULL) // что делать со строками которые не заполнил но остались
+	{
+    	i = 0;
+    	while (paths[y][i] != -1)
+		{
+			printf("%i", paths[y][i]);
+			i++;
+		}
+    	printf("\n");
+    	y++;
+	}
+	printf("Hello, World!\n");
     return 0;
 }

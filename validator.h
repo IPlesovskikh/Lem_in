@@ -78,6 +78,7 @@ int 				get_rooms(int i, int i2, t_data *data, t_lines *lines);
 int					bfs(t_data *data, t_room **array);
 void				fill_array_rooms(t_data *data, t_room **array);
 void				algo_prepare_graph(t_data *data, t_room **array);
+void				get_path(t_data *data, t_room **array, int **paths);
 
 int					get_next_line(const int fd, char **line);
 char				*ft_strjoin(char const *s1, char const *s2);
