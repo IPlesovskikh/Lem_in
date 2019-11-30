@@ -104,4 +104,6 @@ void	get_path(t_data *data, t_room **array, int **paths)
 			create_path(&paths[++i], array, array[parent->num]->level, parent);
 		parent = parent->next;
 	}
+	while (++i < end->input)
+		paths[i] = NULL;
 }

@@ -35,7 +35,7 @@ int main()
 	paths[data.end->output] = NULL;
 	get_path(&data, array, paths);
 	y = 0;
-    while (paths[y] != NULL) // что делать со строками которые не заполнил но остались
+    while (paths[y] != NULL)
 	{
     	i = 0;
     	while (paths[y][i] != -1)
