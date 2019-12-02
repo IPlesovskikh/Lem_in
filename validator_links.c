@@ -89,12 +89,14 @@ int		get_links(t_data *data, t_lines *lines)
 	temp_link = NULL;
 	while (lines)
 	{
-		if ((temp_link = ft_create_link(temp_link, data)) == NULL)
-			return (-1);
-		if ((ft_fill_link(temp_link, data, lines)) == -1)
-			return (-1);
-		if ((check_links(data->links, temp_link)) == -1)
-			return (-1);
+		if (lines->line[0] != '#') {
+			if ((temp_link = ft_create_link(temp_link, data)) == NULL)
+				return (-1);
+			if ((ft_fill_link(temp_link, data, lines)) == -1)
+				return (-1);
+			if ((check_links(data->links, temp_link)) == -1)
+				return (-1);
+		}
 		lines = lines->next;
 	}
 	return (0);

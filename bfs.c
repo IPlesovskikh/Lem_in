@@ -44,7 +44,7 @@ int				bfs(t_data *data, t_room **array)
 	data->end->level = 2147483647;
 	i = 0;
 	y = 0;
-	while (temp_room->level != 2147483647)
+	while (temp_room->level != 2147483647) /// почему i только в else увеличивается ??
 	{
 		ft_put_child(temp_room->child, array, queue, i + 1);
 		if (queue[i][++y] != -1 && i != 0)

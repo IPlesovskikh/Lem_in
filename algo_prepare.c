@@ -14,7 +14,7 @@ static void	del_child_or_parent(t_child	**child, int y, t_room **array, int i)
 	{
 		temp->prev->next = temp->next;
 		if (temp->next)
-			temp->next->prev = temp->prev->next;
+			temp->next->prev = temp->prev;
 		temp = temp->next;
 	}
 	else
@@ -235,6 +235,7 @@ void		algo_prepare_graph(t_data *data, t_room **array)
 	delete_no_one_link(data, array);
 	// считать инпуты старта надо ? может заранее удалить все?
 	del_input_forks(data, array, 0);
+	delete_no_one_link(data, array);
 }
 /*
 нужно удалить путь если :

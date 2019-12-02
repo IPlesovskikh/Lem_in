@@ -25,9 +25,18 @@ int		get_ants(t_data	*data, int fd)
 {
 	char	*line;
 	int 	i;
+	int 	status;
 
-	get_next_line(fd, &line);
-	if (line == NULL)
+	status = 2;
+	while (status == 2 && (status = get_next_line(fd, &line)) > 0)
+	{
+		if (line[0] == '#' && line[1] != '#')
+		{
+			status = 2;
+			free(line);
+		}
+	}// если меньше 0 то выйти ?
+	if (status == -1 || line == NULL)
 		return (-1);
 	i = 0;
 	if (line[i] == '+' || line[i] == '-')

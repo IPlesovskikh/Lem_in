@@ -30,9 +30,9 @@ int main()
 	fill_array_rooms(&data, array);
 	if (bfs(&data, array) == -1) // когда определить, когда вообще нет пути ?
 		return (-1);
-	algo_prepare_graph(&data, array);
-	paths = (int**)malloc(sizeof(int*) * (data.end->output + 1));
-	paths[data.end->output] = NULL;
+	algo_prepare_graph(&data, array); // нужно ли удалять 0 и когда удалять во время  удаления input forks ?
+	paths = (int**)malloc(sizeof(int*) * (data.end->input + 1));
+	paths[data.end->input] = NULL;
 	get_path(&data, array, paths);
 	y = 0;
     while (paths[y] != NULL)
@@ -46,6 +46,7 @@ int main()
     	printf("\n");
     	y++;
 	}
+	//move_ants(data, array, paths);
 	printf("Hello, World!\n");
     return 0;
 }

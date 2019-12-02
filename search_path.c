@@ -6,7 +6,7 @@
 
 static void sort_childs(t_room **array, t_room *end, t_child *parent)
 {
-	while (parent) // чекнуть как код работает else / не проверял
+	while (parent->next) // чекнуть как код работает else / не проверял
 	{
 		if (array[parent->num]->level > array[parent->next->num]->level)
 		{
@@ -28,7 +28,7 @@ static void sort_childs(t_room **array, t_room *end, t_child *parent)
 				parent->next->prev = parent;
 				end->child->next = parent;
 			}
-			parent = end->child;
+			parent = end->parent;
 		}
 		else
 			parent = parent->next;
