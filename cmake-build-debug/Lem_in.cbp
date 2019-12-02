@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Lem_in"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lem_in">
+				<Option output="/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Lem_in" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lem_in"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lem_in/fast">
+				<Option output="/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Lem_in" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lem_in/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/algo_array_of_rooms.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/algo_move_ants.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/algo_prepare.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/bfs.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/ft_atoi.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/ft_isdigit.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/ft_lstnew.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/ft_memcpy.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/ft_strchr.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/ft_strcmp.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/ft_strjoin.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/ft_strlen.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/ft_strsub.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/get_next_line.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/main.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/search_path.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/validator.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/validator.h">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/validator_free.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/validator_links.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/validator_rooms.c">
+			<Option target="Lem_in"/>
+		</Unit>
+		<Unit filename="/Users/ivanplesovskih/Desktop/Lem_in/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

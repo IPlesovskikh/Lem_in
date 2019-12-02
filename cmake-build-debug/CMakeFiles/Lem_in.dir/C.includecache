@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ivanplesovskih/Desktop/Lem_in/main.c
+stdio.h
+-
+validator.h
+/Users/ivanplesovskih/Desktop/Lem_in/validator.h
+
+/Users/ivanplesovskih/Desktop/Lem_in/validator.h
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+fcntl.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+sys/uio.h
+-
+
