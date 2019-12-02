@@ -35,21 +35,24 @@ static void sort_childs(t_room **array, t_room *end, t_child *parent)
 	}
 }
 
-static void create_path(int **path, t_room **array, int max, t_child *parent)
+static void create_path(t_data *data, int **path, t_room **array, int max, t_child *parent)
 {
 	int 	i;
 	t_room	*temp;
 
-	(*path) = (int*)malloc(sizeof(int) * (max + 1));
-	(*path)[max] = -1;
-	i = 0;
+	(*path) = (int*)malloc(sizeof(int) * (max + 4));
+	(*path)[max + 3] = -1;
+	(*path)[0] = max + 2;
+	(*path)[1] = data->start->num;
+	(*path)[max + 2] = data->end->num;
+	i = max + 2;
 	temp = array[parent->num];
-	while (i < max)
+	while (--i > 1)
 	{
 		(*path)[i] = temp->num;
 		temp = array[array[temp->num]->parent->num];
-		i++;
 	}
+	data->total_paths++;
 }
 
 int		check_forks(int **paths, int checked, int max)
@@ -87,7 +90,7 @@ void	get_path(t_data *data, t_room **array, int **paths)
 	sort_childs(array, end, end->parent);
 	i = 0;
 	parent = end->parent;
-	create_path(&paths[i], array, array[parent->num]->level, parent);
+	create_path(data, &paths[i], array, array[parent->num]->level, parent);
 	parent = parent->next;
 	start = data->start->num;
 	while (parent)
@@ -102,7 +105,7 @@ void	get_path(t_data *data, t_room **array, int **paths)
 				temp = array[temp->num]->parent;
 		}
 		if (status == 1 || check_forks(paths, temp->num, i + 1) == 1)
-			create_path(&paths[++i], array, array[parent->num]->level, parent);
+			create_path(data, &paths[++i], array, array[parent->num]->level, parent);
 		parent = parent->next;
 	}
 	while (++i < end->input)

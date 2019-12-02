@@ -7,6 +7,9 @@ void    fill_data(t_data *data)
     data->end = NULL;
     data->start = NULL;
     data->links = NULL;
+    data->rooms = NULL;
+    data->total_rooms = 0;
+    data->total_paths = 0;
 }
 
 int main()

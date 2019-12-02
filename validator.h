@@ -53,6 +53,7 @@ typedef struct		s_data
 	t_room			*start;
 	t_room			*end;
 	int				total_rooms;
+	int 			total_paths;
 }					t_data;
 
 typedef struct		s_list
