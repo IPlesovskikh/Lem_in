@@ -10,6 +10,7 @@ void    fill_data(t_data *data)
     data->rooms = NULL;
     data->total_rooms = 0;
     data->total_paths = 0;
+    data->k = 1;
 }
 
 int main()
@@ -49,7 +50,7 @@ int main()
     	printf("\n");
     	y++;
 	}
-	//move_ants(data, array, paths);
 	printf("Hello, World!\n");
+    ft_first(&data, array, paths, NULL);
     return 0;
 }

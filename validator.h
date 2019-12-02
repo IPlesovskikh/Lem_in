@@ -23,6 +23,15 @@ typedef struct		s_child
 	struct s_child 	*prev;
 }					t_child;
 
+typedef struct		s_ant
+{
+	int 			i;
+	int 			j;
+	int 			name;
+	struct s_ant	*next;
+	struct s_ant	*prev;
+}					t_ant;
+
 typedef struct		s_room
 {
 	int 			num;
@@ -54,6 +63,7 @@ typedef struct		s_data
 	t_room			*end;
 	int				total_rooms;
 	int 			total_paths;
+	int 			k;
 }					t_data;
 
 typedef struct		s_list
@@ -80,7 +90,7 @@ int					bfs(t_data *data, t_room **array);
 void				fill_array_rooms(t_data *data, t_room **array);
 void				algo_prepare_graph(t_data *data, t_room **array);
 void				get_path(t_data *data, t_room **array, int **paths);
-void 				move_ants(t_data *data, t_room **array, int **paths);
+void 				ft_first(t_data *data, t_room **array, int **paths, t_ant *ant);
 
 int					get_next_line(const int fd, char **line);
 char				*ft_strjoin(char const *s1, char const *s2);

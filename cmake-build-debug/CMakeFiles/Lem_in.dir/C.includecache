@@ -6,13 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/ivanplesovskih/Desktop/Lem_in/main.c
-stdio.h
--
+/home/jbowen/CLionProjects/Lem_in/algo_move_ants.c
 validator.h
-/Users/ivanplesovskih/Desktop/Lem_in/validator.h
+/home/jbowen/CLionProjects/Lem_in/validator.h
 
-/Users/ivanplesovskih/Desktop/Lem_in/validator.h
+/home/jbowen/CLionProjects/Lem_in/validator.h
 stdio.h
 -
 stdlib.h
