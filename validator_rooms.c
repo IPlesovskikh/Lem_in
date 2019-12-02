@@ -20,7 +20,7 @@ static int		allocate_memory_for_room(t_room	**temp, t_data *data)
 	{
 		if (((*temp)->next = malloc(sizeof(t_room))) == NULL)
 			return (-1);
-		(*temp)->next->child = (*temp);
+		(*temp)->next->child = NULL;
 		(*temp) = (*temp)->next;
 	}
 	else

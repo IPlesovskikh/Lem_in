@@ -80,6 +80,7 @@ int		ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines)
 	if ((temp_link->b = check_rooms(data, temp)) == -1)
 		return (-1);
 	free(temp);
+	return (0);
 }
 
 int		get_links(t_data *data, t_lines *lines)
@@ -89,7 +90,8 @@ int		get_links(t_data *data, t_lines *lines)
 	temp_link = NULL;
 	while (lines)
 	{
-		if (lines->line[0] != '#') {
+		if (lines->line[0] != '#')
+		{
 			if ((temp_link = ft_create_link(temp_link, data)) == NULL)
 				return (-1);
 			if ((ft_fill_link(temp_link, data, lines)) == -1)

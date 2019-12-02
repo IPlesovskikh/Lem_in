@@ -14,13 +14,15 @@ void		ft_put_child(t_child *temp_child, t_room **array, int **queue, int i)
 	while (temp_child)
 	{
 		if (array[temp_child->num]->level == 2147483647)
-			queue[i][y++] = temp_child->num;
+			temp_child = NULL;
 		else if (array[temp_child->num]->level == -1)
 		{
 			array[temp_child->num]->level = i;
 			queue[i][y++] = temp_child->num;
+			temp_child = temp_child->next;
 		}
-		temp_child = temp_child->next;
+		else
+			temp_child = temp_child->next;
 	}
 	queue[i][y] = -1;
 }
@@ -44,7 +46,7 @@ int				bfs(t_data *data, t_room **array)
 	data->end->level = 2147483647;
 	i = 0;
 	y = 0;
-	while (temp_room->level != 2147483647) /// почему i только в else увеличивается ??
+	while (i < data->total_rooms && temp_room) //temp_room->level != 2147483647
 	{
 		ft_put_child(temp_room->child, array, queue, i + 1);
 		if (queue[i][++y] != -1 && i != 0)
@@ -52,7 +54,7 @@ int				bfs(t_data *data, t_room **array)
 		else
 		{
 			y = 0;
-			temp_room = array[queue[++i][0]];
+			temp_room = (queue[++i][0] != -1) ? array[queue[i][0]] : NULL;
 		}
 	}
 	return (0);

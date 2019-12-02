@@ -98,7 +98,8 @@ void	get_path(t_data *data, t_room **array, int **paths)
 		{
 			if (array[temp->num]->output > 1)
 				status = -1;
-			temp = array[temp->num]->parent;
+			else
+				temp = array[temp->num]->parent;
 		}
 		if (status == 1 || check_forks(paths, temp->num, i + 1) == 1)
 			create_path(&paths[++i], array, array[parent->num]->level, parent);
