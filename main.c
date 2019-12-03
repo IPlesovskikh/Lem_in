@@ -22,7 +22,6 @@ int main()
 	int 	y;
 	int 	i;
 
-    printf("Hello, World!\n");
     fd = open("../mapp", O_RDONLY);
     fill_data(&data);
     if (validator(&data, fd) == -1)
@@ -38,6 +37,7 @@ int main()
 	paths = (int**)malloc(sizeof(int*) * (data.end->input + 1));
 	paths[data.end->input] = NULL;
 	get_path(&data, array, paths);
+	/*
 	y = 0;
     while (paths[y] != NULL)
 	{
@@ -51,6 +51,7 @@ int main()
     	y++;
 	}
 	printf("Hello, World!\n");
+	 */
     ft_first(&data, array, paths, NULL);
     return 0;
 }

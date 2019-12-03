@@ -8,140 +8,142 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/jbowen/CLionProjects/Lem_in/cmake-build-debug"/>
+				<Option working_dir="/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/jbowen/CLionProjects/Lem_in/cmake-build-debug"/>
+				<Option working_dir="/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Lem_in">
-				<Option output="/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Lem_in" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/jbowen/CLionProjects/Lem_in/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lem_in"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Lem_in/fast">
-				<Option output="/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Lem_in" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/jbowen/CLionProjects/Lem_in/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lem_in/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/jbowen/CLionProjects/Lem_in/cmake-build-debug"/>
+				<Option working_dir="/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jbowen/CLionProjects/Lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lem_in">
+				<Option output="/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Lem_in" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lem_in"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lem_in/fast">
+				<Option output="/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Lem_in" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lem_in/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pdonnie/CLionProjects/Lem_in_final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/algo_array_of_rooms.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/algo_array_of_rooms.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/algo_move_ants.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/algo_move_ants.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/algo_prepare.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/algo_prepare.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/bfs.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/bfs.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/ft_atoi.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/ft_atoi.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/ft_isdigit.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/ft_isdigit.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/ft_lstnew.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/ft_lstnew.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/ft_memcpy.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/ft_memcpy.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/ft_strchr.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/ft_strchr.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/ft_strcmp.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/ft_strcmp.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/ft_strjoin.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/ft_strjoin.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/ft_strlen.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/ft_strlen.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/ft_strsub.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/ft_strsub.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/get_next_line.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/get_next_line.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/main.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/main.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/search_path.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/search_path.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/validator.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/validator.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/validator.h">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/validator.h">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/validator_free.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/validator_free.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/validator_links.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/validator_links.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/validator_rooms.c">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/validator_rooms.c">
 			<Option target="Lem_in"/>
 		</Unit>
-		<Unit filename="/home/jbowen/CLionProjects/Lem_in/CMakeLists.txt">
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
