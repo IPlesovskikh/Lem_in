@@ -8,7 +8,10 @@ static int		check_coordinates(t_room *temp, t_room *check)
 	while (temp->num != check->num)
 	{
 		if ((temp->x == check->x) && (temp->y == check->y))
+		{
+			printf("Error: two rooms have the same coordinates : x = %d y = %d\n", temp->x, temp->y);
 			return (-1);
+		}
 		check = check->next;
 	}
 	return (0);

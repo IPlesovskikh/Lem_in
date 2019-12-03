@@ -97,7 +97,10 @@ int		get_links(t_data *data, t_lines *lines)
 			if ((ft_fill_link(temp_link, data, lines)) == -1)
 				return (-1);
 			if ((check_links(data->links, temp_link)) == -1)
+			{
+				printf("Error : duplicate of link : %s ", lines->line);
 				return (-1);
+			}
 		}
 		lines = lines->next;
 	}

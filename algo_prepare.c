@@ -233,16 +233,44 @@ void		del_input_forks(t_data *data, t_room **array, int i)
 	}
 }
 
+void		delete_no_lvl_from_end(t_data *data, t_room **array)
+{
+	t_child	*parent;
 
-void		algo_prepare_graph(t_data *data, t_room **array)
+	parent = data->end->parent;
+	while (parent)
+	{
+		if (array[parent->num]->num != data->start->num)
+		{
+			if (array[parent->num]->parent == NULL)
+			{
+				del_child_or_parent(&parent, parent->num, array, data->end->num);
+				data->end->input--;
+			}
+			else
+				parent = parent->next;
+		}
+		else
+			parent = parent->next;
+	}
+}
+
+int			algo_prepare_graph(t_data *data,t_room **array)
 {
 	del_same_lvl_and_get_directions(data, array);
+	if (data->end->parent == NULL)
+	{
+		printf("Error : no paths from start to end");
+		return (-1);
+	}
 	del_no_lvl(data, array);
 	calculate_input_and_output(data, array);
 	delete_no_one_link(data, array);
 	// считать инпуты старта надо ? может заранее удалить все?
 	del_input_forks(data, array, 0);
 	delete_no_one_link(data, array);
+	delete_no_lvl_from_end(data, array);
+	return (0);
 }
 /*
 нужно удалить путь если :
