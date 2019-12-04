@@ -1,7 +1,7 @@
 
 #include "validator.h"
 
-static void	del_child_or_parent(t_child	**child, int y, t_room **array, int i)
+static void	del_child_or_parent(t_child	**child, int y, t_room **array, int i) // функцию отдельно сделать для парента и нет
 {
 	t_child		*temp;
 	t_child		*del;
@@ -60,7 +60,7 @@ static void	get_direction(t_child *child, t_room **array, int i)
 		array[i]->parent->num = child->num;
 	}
 }
-
+/*
 static void	del_same_lvl_and_get_directions(t_data *data, t_room **array)
 {
 	int 	i;
@@ -87,7 +87,40 @@ static void	del_same_lvl_and_get_directions(t_data *data, t_room **array)
 		i++;
 	}
 }
+*/
 
+static void	del_same_lvl_and_get_directions(t_data *data, t_room **array, int **queue)
+{
+	int 	i;
+	int 	y;
+	t_child	*child;
+
+	i = -1;
+	while (queue[++i][0] != -1) // нужно ли у старта всех парентов удалять а у финиша всех детей ?
+	{
+		y = -1;
+		while (queue[i][++y] != -1)
+		{
+			child = array[queue[i][y]]->child;
+			while (child)
+			{
+				if (array[child->num]->level == array[queue[i][y]]->level)
+					del_child_or_parent(&child, child->num, array, queue[i][y]);
+				else if (array[child->num]->level < array[queue[i][y]]->level)
+				{
+					get_direction(child, array, queue[i][y]);
+					del_child_or_parent(&child, child->num, array, queue[i][y]);
+				}
+				else
+					child = child->next;
+			}
+		}
+	}
+	data->end->parent = data->end->child;
+	data->end->child = NULL;
+}
+
+/*
 static void	del_no_lvl(t_data *data, t_room **array)
 {
 	int 	i;
@@ -110,65 +143,102 @@ static void	del_no_lvl(t_data *data, t_room **array)
 		i++;
 	}
 }
+ */
 
-static void	calculate_input_and_output(t_data *data, t_room **array)
+static void	del_no_lvl(t_data *data, t_room **array, int **queue)
 {
 	int 	i;
-	int 	max;
-	t_child	*child;
+	int 	y;
+	t_child	*parent;
+	t_child	*temp;
 
-	i = 0;
-	max = data->total_rooms;
-	while (i < max)
+	i = -1;
+	while (queue[++i][0] != -1)
 	{
-		child = array[i]->child;
-		while (child)
+		y = -1;
+		while (queue[i][++y] != -1)
 		{
-			array[i]->output++;
-			array[child->num]->input++;
-			child = child->next;
+			parent = array[queue[i][y]]->parent;
+			while (parent)
+			{
+				if (array[parent->num]->level == -1)
+				{
+					//temp = array[parent->num]->child;
+					//while (temp)
+					//{
+					//del_child_or_parent(&temp, temp->num, array, parent->num); //&child, child->num, array, queue[i][y]
+					del_child_or_parent(&parent, parent->num, array, queue[i][y]);
+					//}
+				}
+				else
+					parent = parent->next;
+			}
 		}
-		i++;
 	}
 }
 
-static void		delete_no_one_link(t_data *data, t_room **array)
+static void	calculate_input_and_output(t_data *data, t_room **array, int **queue)
 {
 	int 	i;
-	int 	max;
+	int 	y;
+	t_child	*child;
+
+	i = 0;
+	while (queue[++i][0] != -1)
+	{
+		y = -1;
+		while (queue[i][++y] != -1)
+		{
+			child = array[queue[i][y]]->child;
+			while (child)
+			{
+				array[queue[i][y]]->output++;
+				array[child->num]->input++;
+				child = child->next;
+			}
+		}
+	}
+}
+
+static void		delete_no_one_link(t_data *data, t_room **array, int **queue)
+{
+	int 	i;
+	int 	y;
 	t_child	*child;
 	t_child	*temp_parent;
 
 	i = -1;
-	max = data->total_rooms;
-	while (++i < max)
+	while (queue[++i][0] != -1)
 	{
-		child = array[i]->child;
-		while (child && array[child->num]->num != data->end->num &&
-						  array[child->num]->num != data->start->num)
+		y = -1;
+		while (queue[i][++y] != -1)
 		{
-			if (array[child->num]->output == 0)
+			child = array[queue[i][y]]->child;
+			while (child)
 			{
-				temp_parent = array[child->num]->parent;
-				del_child_or_parent(&temp_parent, i, array, child->num);
-				array[child->num]->input--;
-				del_child_or_parent(&child, child->num, array, i);
-				array[i]->output--;
+				if (array[child->num]->num != data->end->num && array[child->num]->output == 0)
+				{
+					temp_parent = array[child->num]->parent;
+					del_child_or_parent(&temp_parent, queue[i][y], array, child->num);
+					array[child->num]->input--;
+					del_child_or_parent(&child, child->num, array, queue[i][y]);
+					array[i]->output--;
+				}
+				else
+					child = child->next;
 			}
-			else
-				child = child->next;
 		}
 	}
 }
 
-int			search_no_input_forks(t_data *data, t_room **array, t_child *parent, int i)
+int			search_no_input_forks(t_data *data, t_room **array, t_child *parent)
 {
 	if (data->start->num != array[parent->num]->num && array[parent->num]->output == 1)
 	{
 		parent = array[parent->num]->parent;
 		while (parent)
 		{
-			if (search_no_input_forks(data, array, parent, parent->num) == 0)
+			if (search_no_input_forks(data, array, parent) == 0)
 				parent = parent->next;
 			else
 				return (1);
@@ -204,31 +274,34 @@ void		delete_fork(t_room **array, int i, t_child *parent)
 	}
 }
 
-void		del_input_forks(t_data *data, t_room **array, int i)
+void		del_input_forks(t_data *data, t_room **array, int i, int **queue)
 {
-	int 	max;
+	int 	y;
 	t_child	*parent;
 	int 	status;
 
-	max = data->total_rooms;
+	i = 1;
 	status = 0;
-	while (++i < max)
+	while (queue[++i][0] != -1) // первый уровень, возможно ли что там несколько инпутов (кроме старта ?)
 	{
-		if (array[i]->num != data->end->num && array[i]->num !=
-				data->start->num && array[i]->input > 1)
+		y = -1;
+		while (queue[i][++y] != -1)
 		{
-			parent = array[i]->parent;
-			while (status == 0 && parent)
+			if (array[queue[i][y]]->num != data->end->num && array[queue[i][y]]->input > 1) // здесь остановился
 			{
-				if (search_no_input_forks(data, array, parent, i) == 0)
-					parent = parent->next;
+				parent = array[queue[i][y]]->parent;
+				while (status == 0 && parent)
+				{
+					if (search_no_input_forks(data, array, parent) == 0)
+						parent = parent->next;
+					else
+						status = 1;
+				}
+				if (status == 1)
+					delete_fork(array, queue[i][y], parent);
 				else
-					status = 1;
+					delete_fork(array, queue[i][y], array[queue[i][y]]->parent);
 			}
-			if (status == 1)
-				delete_fork(array, i, parent);
-			else
-				delete_fork(array, i, array[i]->parent);
 		}
 	}
 }
@@ -255,20 +328,20 @@ void		delete_no_lvl_from_end(t_data *data, t_room **array)
 	}
 }
 
-int			algo_prepare_graph(t_data *data,t_room **array)
+int			algo_prepare_graph(t_data *data,t_room **array, int **queue)
 {
-	del_same_lvl_and_get_directions(data, array);
+	del_same_lvl_and_get_directions(data, array, queue);
 	if (data->end->parent == NULL)
 	{
 		printf("Error : no paths from start to end");
 		return (-1);
 	}
-	del_no_lvl(data, array);
-	calculate_input_and_output(data, array);
-	delete_no_one_link(data, array);
+	del_no_lvl(data, array, queue);
+	calculate_input_and_output(data, array, queue);
+	delete_no_one_link(data, array, queue);
 	// считать инпуты старта надо ? может заранее удалить все?
-	del_input_forks(data, array, 0);
-	delete_no_one_link(data, array);
+	del_input_forks(data, array, 0, queue);
+	delete_no_one_link(data, array, queue);
 	delete_no_lvl_from_end(data, array);
 	return (0);
 }

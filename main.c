@@ -38,6 +38,20 @@ void    fill_data(t_data *data)
     data->k = 1;
 }
 
+int 	ft_create_queue(t_data *data, int ***queue)
+{
+	int 	i;
+
+	(*queue) = (int**)malloc(sizeof(int*) * data->total_rooms);
+	i = 0;
+	while (i < data->total_rooms)
+	{
+		(*queue)[i] = (int*)malloc(sizeof(int) * data->total_rooms);
+		(*queue)[i++][0] = -1;
+	}
+	return (0);
+}
+
 int main()
 {
     t_data  data;
@@ -46,6 +60,8 @@ int main()
 	int 	**paths;
 	int 	y;
 	int 	i;
+	int 	**queue;
+
 
     fd = open("../mapp", O_RDONLY);
     fill_data(&data);
@@ -56,14 +72,15 @@ int main()
 	if (create_array_rooms(&data, &array) == -1)
 		return (-1);
 	fill_array_rooms(&data, array);
-	if (bfs(&data, array) == -1) // когда определить, когда вообще нет пути ?
+	if (ft_create_queue(&data, &queue) == -1)
 		return (-1);
-	if (algo_prepare_graph(&data, array) == -1)
+	if (bfs(&data, array, queue) == -1) // когда определить, когда вообще нет пути ?
+		return (-1);
+	if (algo_prepare_graph(&data, array, queue) == -1)
 		return (0); // нужно ли удалять 0 и когда удалять во время  удаления input forks ?
 	paths = (int**)malloc(sizeof(int*) * (data.end->input + 1));
 	paths[data.end->input] = NULL;
 	get_path(&data, array, paths);
-	/*
 	y = 0;
     while (paths[y] != NULL)
 	{
@@ -77,7 +94,6 @@ int main()
     	y++;
 	}
 	printf("Hello, World!\n");
-	 */
 	print_ants_rooms_links(&data, array);
     ft_first(&data, array, paths, NULL);
     return 0;

@@ -86,9 +86,9 @@ int					ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines);
 int					get_links(t_data *data, t_lines *lines);
 int 				get_commande(t_data *data, t_lines **lines);
 int 				get_rooms(int i, int i2, t_data *data, t_lines *lines);
-int					bfs(t_data *data, t_room **array);
+int					bfs(t_data *data, t_room **array, int **queue);
 void				fill_array_rooms(t_data *data, t_room **array);
-int					algo_prepare_graph(t_data *data, t_room **array);
+int					algo_prepare_graph(t_data *data, t_room **array, int **queue);
 void				get_path(t_data *data, t_room **array, int **paths);
 void 				ft_first(t_data *data, t_room **array, int **paths, t_ant *ant);
 

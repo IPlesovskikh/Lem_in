@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Lem_in
+# Target rules for targets named lem-in
 
 # Build rule for target.
-Lem_in: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Lem_in
-.PHONY : Lem_in
+lem-in: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lem-in
+.PHONY : lem-in
 
 # fast build rule for target.
-Lem_in/fast:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/build
-.PHONY : Lem_in/fast
+lem-in/fast:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/build
+.PHONY : lem-in/fast
 
 algo_array_of_rooms.o: algo_array_of_rooms.c.o
 
@@ -129,7 +129,7 @@ algo_array_of_rooms.o: algo_array_of_rooms.c.o
 
 # target to build an object file
 algo_array_of_rooms.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/algo_array_of_rooms.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_array_of_rooms.c.o
 .PHONY : algo_array_of_rooms.c.o
 
 algo_array_of_rooms.i: algo_array_of_rooms.c.i
@@ -138,7 +138,7 @@ algo_array_of_rooms.i: algo_array_of_rooms.c.i
 
 # target to preprocess a source file
 algo_array_of_rooms.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/algo_array_of_rooms.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_array_of_rooms.c.i
 .PHONY : algo_array_of_rooms.c.i
 
 algo_array_of_rooms.s: algo_array_of_rooms.c.s
@@ -147,7 +147,7 @@ algo_array_of_rooms.s: algo_array_of_rooms.c.s
 
 # target to generate assembly for a file
 algo_array_of_rooms.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/algo_array_of_rooms.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_array_of_rooms.c.s
 .PHONY : algo_array_of_rooms.c.s
 
 algo_move_ants.o: algo_move_ants.c.o
@@ -156,7 +156,7 @@ algo_move_ants.o: algo_move_ants.c.o
 
 # target to build an object file
 algo_move_ants.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/algo_move_ants.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_move_ants.c.o
 .PHONY : algo_move_ants.c.o
 
 algo_move_ants.i: algo_move_ants.c.i
@@ -165,7 +165,7 @@ algo_move_ants.i: algo_move_ants.c.i
 
 # target to preprocess a source file
 algo_move_ants.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/algo_move_ants.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_move_ants.c.i
 .PHONY : algo_move_ants.c.i
 
 algo_move_ants.s: algo_move_ants.c.s
@@ -174,7 +174,7 @@ algo_move_ants.s: algo_move_ants.c.s
 
 # target to generate assembly for a file
 algo_move_ants.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/algo_move_ants.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_move_ants.c.s
 .PHONY : algo_move_ants.c.s
 
 algo_prepare.o: algo_prepare.c.o
@@ -183,7 +183,7 @@ algo_prepare.o: algo_prepare.c.o
 
 # target to build an object file
 algo_prepare.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/algo_prepare.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_prepare.c.o
 .PHONY : algo_prepare.c.o
 
 algo_prepare.i: algo_prepare.c.i
@@ -192,7 +192,7 @@ algo_prepare.i: algo_prepare.c.i
 
 # target to preprocess a source file
 algo_prepare.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/algo_prepare.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_prepare.c.i
 .PHONY : algo_prepare.c.i
 
 algo_prepare.s: algo_prepare.c.s
@@ -201,7 +201,7 @@ algo_prepare.s: algo_prepare.c.s
 
 # target to generate assembly for a file
 algo_prepare.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/algo_prepare.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_prepare.c.s
 .PHONY : algo_prepare.c.s
 
 bfs.o: bfs.c.o
@@ -210,7 +210,7 @@ bfs.o: bfs.c.o
 
 # target to build an object file
 bfs.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/bfs.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/bfs.c.o
 .PHONY : bfs.c.o
 
 bfs.i: bfs.c.i
@@ -219,7 +219,7 @@ bfs.i: bfs.c.i
 
 # target to preprocess a source file
 bfs.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/bfs.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/bfs.c.i
 .PHONY : bfs.c.i
 
 bfs.s: bfs.c.s
@@ -228,7 +228,7 @@ bfs.s: bfs.c.s
 
 # target to generate assembly for a file
 bfs.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/bfs.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/bfs.c.s
 .PHONY : bfs.c.s
 
 ft_atoi.o: ft_atoi.c.o
@@ -237,7 +237,7 @@ ft_atoi.o: ft_atoi.c.o
 
 # target to build an object file
 ft_atoi.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_atoi.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_atoi.c.o
 .PHONY : ft_atoi.c.o
 
 ft_atoi.i: ft_atoi.c.i
@@ -246,7 +246,7 @@ ft_atoi.i: ft_atoi.c.i
 
 # target to preprocess a source file
 ft_atoi.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_atoi.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_atoi.c.i
 .PHONY : ft_atoi.c.i
 
 ft_atoi.s: ft_atoi.c.s
@@ -255,7 +255,7 @@ ft_atoi.s: ft_atoi.c.s
 
 # target to generate assembly for a file
 ft_atoi.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_atoi.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_atoi.c.s
 .PHONY : ft_atoi.c.s
 
 ft_isdigit.o: ft_isdigit.c.o
@@ -264,7 +264,7 @@ ft_isdigit.o: ft_isdigit.c.o
 
 # target to build an object file
 ft_isdigit.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_isdigit.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_isdigit.c.o
 .PHONY : ft_isdigit.c.o
 
 ft_isdigit.i: ft_isdigit.c.i
@@ -273,7 +273,7 @@ ft_isdigit.i: ft_isdigit.c.i
 
 # target to preprocess a source file
 ft_isdigit.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_isdigit.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_isdigit.c.i
 .PHONY : ft_isdigit.c.i
 
 ft_isdigit.s: ft_isdigit.c.s
@@ -282,7 +282,7 @@ ft_isdigit.s: ft_isdigit.c.s
 
 # target to generate assembly for a file
 ft_isdigit.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_isdigit.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_isdigit.c.s
 .PHONY : ft_isdigit.c.s
 
 ft_lstnew.o: ft_lstnew.c.o
@@ -291,7 +291,7 @@ ft_lstnew.o: ft_lstnew.c.o
 
 # target to build an object file
 ft_lstnew.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_lstnew.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_lstnew.c.o
 .PHONY : ft_lstnew.c.o
 
 ft_lstnew.i: ft_lstnew.c.i
@@ -300,7 +300,7 @@ ft_lstnew.i: ft_lstnew.c.i
 
 # target to preprocess a source file
 ft_lstnew.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_lstnew.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_lstnew.c.i
 .PHONY : ft_lstnew.c.i
 
 ft_lstnew.s: ft_lstnew.c.s
@@ -309,7 +309,7 @@ ft_lstnew.s: ft_lstnew.c.s
 
 # target to generate assembly for a file
 ft_lstnew.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_lstnew.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_lstnew.c.s
 .PHONY : ft_lstnew.c.s
 
 ft_memcpy.o: ft_memcpy.c.o
@@ -318,7 +318,7 @@ ft_memcpy.o: ft_memcpy.c.o
 
 # target to build an object file
 ft_memcpy.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_memcpy.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_memcpy.c.o
 .PHONY : ft_memcpy.c.o
 
 ft_memcpy.i: ft_memcpy.c.i
@@ -327,7 +327,7 @@ ft_memcpy.i: ft_memcpy.c.i
 
 # target to preprocess a source file
 ft_memcpy.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_memcpy.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_memcpy.c.i
 .PHONY : ft_memcpy.c.i
 
 ft_memcpy.s: ft_memcpy.c.s
@@ -336,7 +336,7 @@ ft_memcpy.s: ft_memcpy.c.s
 
 # target to generate assembly for a file
 ft_memcpy.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_memcpy.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_memcpy.c.s
 .PHONY : ft_memcpy.c.s
 
 ft_strchr.o: ft_strchr.c.o
@@ -345,7 +345,7 @@ ft_strchr.o: ft_strchr.c.o
 
 # target to build an object file
 ft_strchr.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strchr.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strchr.c.o
 .PHONY : ft_strchr.c.o
 
 ft_strchr.i: ft_strchr.c.i
@@ -354,7 +354,7 @@ ft_strchr.i: ft_strchr.c.i
 
 # target to preprocess a source file
 ft_strchr.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strchr.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strchr.c.i
 .PHONY : ft_strchr.c.i
 
 ft_strchr.s: ft_strchr.c.s
@@ -363,7 +363,7 @@ ft_strchr.s: ft_strchr.c.s
 
 # target to generate assembly for a file
 ft_strchr.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strchr.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strchr.c.s
 .PHONY : ft_strchr.c.s
 
 ft_strcmp.o: ft_strcmp.c.o
@@ -372,7 +372,7 @@ ft_strcmp.o: ft_strcmp.c.o
 
 # target to build an object file
 ft_strcmp.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strcmp.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strcmp.c.o
 .PHONY : ft_strcmp.c.o
 
 ft_strcmp.i: ft_strcmp.c.i
@@ -381,7 +381,7 @@ ft_strcmp.i: ft_strcmp.c.i
 
 # target to preprocess a source file
 ft_strcmp.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strcmp.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strcmp.c.i
 .PHONY : ft_strcmp.c.i
 
 ft_strcmp.s: ft_strcmp.c.s
@@ -390,7 +390,7 @@ ft_strcmp.s: ft_strcmp.c.s
 
 # target to generate assembly for a file
 ft_strcmp.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strcmp.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strcmp.c.s
 .PHONY : ft_strcmp.c.s
 
 ft_strjoin.o: ft_strjoin.c.o
@@ -399,7 +399,7 @@ ft_strjoin.o: ft_strjoin.c.o
 
 # target to build an object file
 ft_strjoin.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strjoin.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strjoin.c.o
 .PHONY : ft_strjoin.c.o
 
 ft_strjoin.i: ft_strjoin.c.i
@@ -408,7 +408,7 @@ ft_strjoin.i: ft_strjoin.c.i
 
 # target to preprocess a source file
 ft_strjoin.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strjoin.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strjoin.c.i
 .PHONY : ft_strjoin.c.i
 
 ft_strjoin.s: ft_strjoin.c.s
@@ -417,7 +417,7 @@ ft_strjoin.s: ft_strjoin.c.s
 
 # target to generate assembly for a file
 ft_strjoin.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strjoin.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strjoin.c.s
 .PHONY : ft_strjoin.c.s
 
 ft_strlen.o: ft_strlen.c.o
@@ -426,7 +426,7 @@ ft_strlen.o: ft_strlen.c.o
 
 # target to build an object file
 ft_strlen.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strlen.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strlen.c.o
 .PHONY : ft_strlen.c.o
 
 ft_strlen.i: ft_strlen.c.i
@@ -435,7 +435,7 @@ ft_strlen.i: ft_strlen.c.i
 
 # target to preprocess a source file
 ft_strlen.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strlen.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strlen.c.i
 .PHONY : ft_strlen.c.i
 
 ft_strlen.s: ft_strlen.c.s
@@ -444,7 +444,7 @@ ft_strlen.s: ft_strlen.c.s
 
 # target to generate assembly for a file
 ft_strlen.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strlen.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strlen.c.s
 .PHONY : ft_strlen.c.s
 
 ft_strsub.o: ft_strsub.c.o
@@ -453,7 +453,7 @@ ft_strsub.o: ft_strsub.c.o
 
 # target to build an object file
 ft_strsub.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strsub.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strsub.c.o
 .PHONY : ft_strsub.c.o
 
 ft_strsub.i: ft_strsub.c.i
@@ -462,7 +462,7 @@ ft_strsub.i: ft_strsub.c.i
 
 # target to preprocess a source file
 ft_strsub.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strsub.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strsub.c.i
 .PHONY : ft_strsub.c.i
 
 ft_strsub.s: ft_strsub.c.s
@@ -471,7 +471,7 @@ ft_strsub.s: ft_strsub.c.s
 
 # target to generate assembly for a file
 ft_strsub.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/ft_strsub.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/ft_strsub.c.s
 .PHONY : ft_strsub.c.s
 
 get_next_line.o: get_next_line.c.o
@@ -480,7 +480,7 @@ get_next_line.o: get_next_line.c.o
 
 # target to build an object file
 get_next_line.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/get_next_line.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/get_next_line.c.o
 .PHONY : get_next_line.c.o
 
 get_next_line.i: get_next_line.c.i
@@ -489,7 +489,7 @@ get_next_line.i: get_next_line.c.i
 
 # target to preprocess a source file
 get_next_line.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/get_next_line.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/get_next_line.c.i
 .PHONY : get_next_line.c.i
 
 get_next_line.s: get_next_line.c.s
@@ -498,7 +498,7 @@ get_next_line.s: get_next_line.c.s
 
 # target to generate assembly for a file
 get_next_line.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/get_next_line.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/get_next_line.c.s
 .PHONY : get_next_line.c.s
 
 main.o: main.c.o
@@ -507,7 +507,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/main.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -516,7 +516,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/main.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -525,7 +525,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/main.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/main.c.s
 .PHONY : main.c.s
 
 search_path.o: search_path.c.o
@@ -534,7 +534,7 @@ search_path.o: search_path.c.o
 
 # target to build an object file
 search_path.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/search_path.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/search_path.c.o
 .PHONY : search_path.c.o
 
 search_path.i: search_path.c.i
@@ -543,7 +543,7 @@ search_path.i: search_path.c.i
 
 # target to preprocess a source file
 search_path.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/search_path.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/search_path.c.i
 .PHONY : search_path.c.i
 
 search_path.s: search_path.c.s
@@ -552,7 +552,7 @@ search_path.s: search_path.c.s
 
 # target to generate assembly for a file
 search_path.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/search_path.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/search_path.c.s
 .PHONY : search_path.c.s
 
 validator.o: validator.c.o
@@ -561,7 +561,7 @@ validator.o: validator.c.o
 
 # target to build an object file
 validator.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator.c.o
 .PHONY : validator.c.o
 
 validator.i: validator.c.i
@@ -570,7 +570,7 @@ validator.i: validator.c.i
 
 # target to preprocess a source file
 validator.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator.c.i
 .PHONY : validator.c.i
 
 validator.s: validator.c.s
@@ -579,7 +579,7 @@ validator.s: validator.c.s
 
 # target to generate assembly for a file
 validator.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator.c.s
 .PHONY : validator.c.s
 
 validator_free.o: validator_free.c.o
@@ -588,7 +588,7 @@ validator_free.o: validator_free.c.o
 
 # target to build an object file
 validator_free.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator_free.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_free.c.o
 .PHONY : validator_free.c.o
 
 validator_free.i: validator_free.c.i
@@ -597,7 +597,7 @@ validator_free.i: validator_free.c.i
 
 # target to preprocess a source file
 validator_free.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator_free.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_free.c.i
 .PHONY : validator_free.c.i
 
 validator_free.s: validator_free.c.s
@@ -606,7 +606,7 @@ validator_free.s: validator_free.c.s
 
 # target to generate assembly for a file
 validator_free.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator_free.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_free.c.s
 .PHONY : validator_free.c.s
 
 validator_links.o: validator_links.c.o
@@ -615,7 +615,7 @@ validator_links.o: validator_links.c.o
 
 # target to build an object file
 validator_links.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator_links.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_links.c.o
 .PHONY : validator_links.c.o
 
 validator_links.i: validator_links.c.i
@@ -624,7 +624,7 @@ validator_links.i: validator_links.c.i
 
 # target to preprocess a source file
 validator_links.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator_links.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_links.c.i
 .PHONY : validator_links.c.i
 
 validator_links.s: validator_links.c.s
@@ -633,7 +633,7 @@ validator_links.s: validator_links.c.s
 
 # target to generate assembly for a file
 validator_links.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator_links.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_links.c.s
 .PHONY : validator_links.c.s
 
 validator_rooms.o: validator_rooms.c.o
@@ -642,7 +642,7 @@ validator_rooms.o: validator_rooms.c.o
 
 # target to build an object file
 validator_rooms.c.o:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator_rooms.c.o
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_rooms.c.o
 .PHONY : validator_rooms.c.o
 
 validator_rooms.i: validator_rooms.c.i
@@ -651,7 +651,7 @@ validator_rooms.i: validator_rooms.c.i
 
 # target to preprocess a source file
 validator_rooms.c.i:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator_rooms.c.i
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_rooms.c.i
 .PHONY : validator_rooms.c.i
 
 validator_rooms.s: validator_rooms.c.s
@@ -660,7 +660,7 @@ validator_rooms.s: validator_rooms.c.s
 
 # target to generate assembly for a file
 validator_rooms.c.s:
-	$(MAKE) -f CMakeFiles/Lem_in.dir/build.make CMakeFiles/Lem_in.dir/validator_rooms.c.s
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_rooms.c.s
 .PHONY : validator_rooms.c.s
 
 # Help Target
@@ -671,7 +671,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... Lem_in"
+	@echo "... lem-in"
 	@echo "... algo_array_of_rooms.o"
 	@echo "... algo_array_of_rooms.i"
 	@echo "... algo_array_of_rooms.s"

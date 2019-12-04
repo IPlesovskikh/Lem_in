@@ -76,7 +76,9 @@ void 	ft_first(t_data *data, t_room **array, int **paths, t_ant *ant)
 			tmp = ant;
 			ant = ant->next;
 			if (ant != NULL)
-				ant->prev = NULL;
+				ant->prev = tmp->prev;
+			if (tmp->prev != NULL)
+				(tmp->prev)->next = ant;
 			free(tmp);
 		}
 	}
@@ -90,7 +92,9 @@ void 	ft_first(t_data *data, t_room **array, int **paths, t_ant *ant)
 		tmp = ant;
 		ant = ant->next;
 		if (ant != NULL)
-			ant->prev = NULL;
+			ant->prev = tmp->prev;
+		if (tmp->prev != NULL)
+			(tmp->prev)->next = ant;
 		free(tmp);
 	}
 	if (ant == NULL)
