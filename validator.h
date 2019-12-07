@@ -104,5 +104,6 @@ int					ft_isdigit(int c);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_check_comment(t_lines **lines);
 int					create_array_rooms(t_data *data, t_room ***array);
+void	            del_child_or_parent(t_child	**child, int y, t_room **array, int i);
 
 #endif //INC_42_LEM_IN_VALIDATOR_H

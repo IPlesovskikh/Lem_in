@@ -43,11 +43,11 @@ int 	ft_create_queue(t_data *data, int ***queue)
 	int 	i;
 
 	(*queue) = (int**)malloc(sizeof(int*) * data->total_rooms);
-	i = 0;
-	while (i < data->total_rooms)
+	i = -1;
+	while (++i < data->total_rooms)
 	{
 		(*queue)[i] = (int*)malloc(sizeof(int) * data->total_rooms);
-		(*queue)[i++][0] = -1;
+		(*queue)[i][0] = -1;
 	}
 	return (0);
 }
@@ -63,7 +63,7 @@ int main()
 	int 	**queue;
 
 
-    fd = open("../mapp", O_RDONLY);
+    fd = open("../mapp", O_RDONLY); //как сделать чтобы fd ловил < ?
     fill_data(&data);
     if (validator(&data, fd) == -1)
     	return (-1);// дата удалить // универсальная функция + посмотреть случаи когда не успели записать в дата
@@ -78,11 +78,13 @@ int main()
 		return (-1);
 	if (algo_prepare_graph(&data, array, queue) == -1)
 		return (0); // нужно ли удалять 0 и когда удалять во время  удаления input forks ?
-	paths = (int**)malloc(sizeof(int*) * (data.end->input + 1));
+	if ((paths = (int**)malloc(sizeof(int*) * (data.end->input + 1))) == NULL)
+		return (-1);
 	paths[data.end->input] = NULL;
 	get_path(&data, array, paths);
 	y = 0;
-    while (paths[y] != NULL)
+	/*
+    while (paths[y] != NULL)         ///!!!!! я когда удаляю звено и потом queu использую ???
 	{
     	i = 0;
     	while (paths[y][i] != -1)
@@ -93,6 +95,7 @@ int main()
     	printf("\n");
     	y++;
 	}
+	 */
 	printf("Hello, World!\n");
 	print_ants_rooms_links(&data, array);
     ft_first(&data, array, paths, NULL);

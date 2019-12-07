@@ -1,7 +1,7 @@
 
 #include "validator.h"
 
-static void	del_child_or_parent(t_child	**child, int y, t_room **array, int i) // функцию отдельно сделать для парента и нет
+void	del_child_or_parent(t_child	**child, int y, t_room **array, int i) // функцию отдельно сделать для парента и нет
 {
 	t_child		*temp;
 	t_child		*del;
@@ -19,7 +19,7 @@ static void	del_child_or_parent(t_child	**child, int y, t_room **array, int i) /
 	}
 	else
 	{
-		if (array[i]->child && array[i]->child->num == y)
+		if (array[i]->child && array[i]->child->num == y) //array[i]->child а ниче что не перелистываю ?
 		{
 			array[i]->child = temp->next;
 			if (array[i]->child)
@@ -183,7 +183,7 @@ static void	calculate_input_and_output(t_data *data, t_room **array, int **queue
 	int 	y;
 	t_child	*child;
 
-	i = 0;
+	i = -1;
 	while (queue[++i][0] != -1)
 	{
 		y = -1;
@@ -222,7 +222,7 @@ static void		delete_no_one_link(t_data *data, t_room **array, int **queue)
 					del_child_or_parent(&temp_parent, queue[i][y], array, child->num);
 					array[child->num]->input--;
 					del_child_or_parent(&child, child->num, array, queue[i][y]);
-					array[i]->output--;
+					array[queue[i][y]]->output--;
 				}
 				else
 					child = child->next;
@@ -262,6 +262,7 @@ void		delete_fork(t_room **array, int i, t_child *parent)
 			temp = temp->next;
 			array[i]->parent = parent;
 			array[i]->parent->next = NULL;
+			array[i]->parent->prev = NULL;
 		}
 		else
 		{
@@ -282,12 +283,12 @@ void		del_input_forks(t_data *data, t_room **array, int i, int **queue)
 
 	i = 1;
 	status = 0;
-	while (queue[++i][0] != -1) // первый уровень, возможно ли что там несколько инпутов (кроме старта ?)
+	while (queue[++i][0] != -1)
 	{
 		y = -1;
 		while (queue[i][++y] != -1)
 		{
-			if (array[queue[i][y]]->num != data->end->num && array[queue[i][y]]->input > 1) // здесь остановился
+			if (array[queue[i][y]]->num != data->end->num && array[queue[i][y]]->input > 1)
 			{
 				parent = array[queue[i][y]]->parent;
 				while (status == 0 && parent)
@@ -328,9 +329,66 @@ void		delete_no_lvl_from_end(t_data *data, t_room **array)
 	}
 }
 
-int			algo_prepare_graph(t_data *data,t_room **array, int **queue)
+void        delete_lvl_from_end(t_data *data, t_room **array)
+{
+    t_child     *parent;
+    t_child     *child;
+    int 		temp;
+
+    parent = data->end->parent;
+    while (parent)
+    {
+        child = array[parent->num]->parent;
+        while (child)
+        {
+            if (array[child->num]->level > array[parent->num]->level)
+			{
+				temp = child->num;
+            	del_child_or_parent(&child, child->num, array, parent->num);
+            	del_child_or_parent(&(array[temp]->child), parent->num, array, temp);
+			}
+            else
+            	child = child->next;
+        }
+        parent = parent->next;
+    }
+}
+
+void		del_queue(t_room **array, int **queue)
+{
+	int 	i;
+	int 	y;
+	int 	temp;
+	int 	status;
+
+	i = 0;
+	while (queue[++i][0] != -1)
+	{
+		y = -1;
+		while (queue[i][++y] != -1)
+		{
+			if (array[queue[i][y]]->level == -1 || array[queue[i][y]]->input == 0 ||
+				array[queue[i][y]]->output == 0)
+			{
+				temp = y;
+				status = 0;
+				while (status == 0)
+				{
+					if (queue[i][temp + 1] == -1)
+						status = 1;
+					array[queue[i][temp]] = array[queue[i][temp + 1]];
+					temp++;
+				}
+				y--;
+			}
+		}
+	}
+}
+
+int			algo_prepare_graph(t_data *data,t_room **array,int **queue)
 {
 	del_same_lvl_and_get_directions(data, array, queue);
+    delete_lvl_from_end(data, array);// зачем это ? вроде и так уже нет // тут падает - не потому как в бфс я удаляю на последнем уровне но не удаляю у тех кого удлали, а что с предпоследней строчкой она правильная ?
 	if (data->end->parent == NULL)
 	{
 		printf("Error : no paths from start to end");
@@ -339,7 +397,7 @@ int			algo_prepare_graph(t_data *data,t_room **array, int **queue)
 	del_no_lvl(data, array, queue);
 	calculate_input_and_output(data, array, queue);
 	delete_no_one_link(data, array, queue);
-	// считать инпуты старта надо ? может заранее удалить все?
+	//del_queue(array, queue);
 	del_input_forks(data, array, 0, queue);
 	delete_no_one_link(data, array, queue);
 	delete_no_lvl_from_end(data, array);
