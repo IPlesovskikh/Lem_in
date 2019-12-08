@@ -19,7 +19,7 @@ void	del_child_or_parent(t_child	**child, int y, t_room **array, int i) // фу�
 	}
 	else
 	{
-		if (array[i]->child && array[i]->child->num == y) //array[i]->child а ниче что не перелистываю ?
+		if (array[i]->child && array[i]->child->num == y)
 		{
 			array[i]->child = temp->next;
 			if (array[i]->child)
@@ -236,13 +236,13 @@ int			search_no_input_forks(t_data *data, t_room **array, t_child *parent)
 	if (data->start->num != array[parent->num]->num && array[parent->num]->output == 1)
 	{
 		parent = array[parent->num]->parent;
-		while (parent)
-		{
-			if (search_no_input_forks(data, array, parent) == 0)
-				parent = parent->next;
-			else
-				return (1);
-		}
+		//while (parent)
+		//{
+		if (search_no_input_forks(data, array, parent) == 0) // в принципе при удалении всех инпутов до этого не возможно такой ситуации
+			return (0); //parent = parent->next;
+		else
+			return (1);
+		//}
 	}
 	else if (data->start->num == array[parent->num]->num)
 		return (1);

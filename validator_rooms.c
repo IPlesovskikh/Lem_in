@@ -40,15 +40,15 @@ static t_room	*create_room(t_data *data, t_lines *lines, int i)
 {
 	t_room		*temp;
 	t_room		*check;
-	static int 	num;
 
 	temp = data->rooms;
 	while (temp && temp->next != NULL)
 		temp = temp->next;
 	if (allocate_memory_for_room(&temp, data) == -1)
 		return (NULL);
-	temp->num = num++;
-	data->total_rooms = num;
+	temp->num = data->order;
+	data->order++;
+	data->total_rooms = data->order;
 	temp->next = NULL;
 	temp->name = NULL;
 	temp->x = 0;

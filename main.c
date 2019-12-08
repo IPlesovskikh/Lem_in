@@ -36,6 +36,7 @@ void    fill_data(t_data *data)
     data->total_rooms = 0;
     data->total_paths = 0;
     data->k = 1;
+    data->order = 0;
 }
 
 int 	ft_create_queue(t_data *data, int ***queue)
@@ -81,7 +82,8 @@ int main()
 	if ((paths = (int**)malloc(sizeof(int*) * (data.end->input + 1))) == NULL)
 		return (-1);
 	paths[data.end->input] = NULL;
-	get_path(&data, array, paths);
+	if (get_path(&data, array, paths) == -1)
+		return (-1);
 	y = 0;
 	/*
     while (paths[y] != NULL)         ///!!!!! я когда удаляю звено и потом queu использую ???
