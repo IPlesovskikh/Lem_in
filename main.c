@@ -81,12 +81,27 @@ int main()
 		return (0); // нужно ли удалять 0 и когда удалять во время  удаления input forks ?
 	if ((paths = (int**)malloc(sizeof(int*) * (data.end->input + 1))) == NULL)
 		return (-1);
+	i = -1;
 	paths[data.end->input] = NULL;
+	while (++i < data.end->input)
+		paths[data.end->input] = NULL;
 	if (get_path(&data, array, paths) == -1)
 		return (-1);
-	y = 0;
 	/*
-    while (paths[y] != NULL)         ///!!!!! я когда удаляю звено и потом queu использую ???
+	i = -1;
+	while (queue[++i][0] != -1)
+	{
+		y = -1;
+		while (queue[i][++y] != -1)
+		{
+			printf("%d ", queue[i][y]);
+		}
+		printf("\n");
+	}
+	 */
+
+	y = 0;
+	while (paths[y] != NULL)         ///!!!!! я когда удаляю звено и потом queu использую ???
 	{
     	i = 0;
     	while (paths[y][i] != -1)
@@ -97,7 +112,6 @@ int main()
     	printf("\n");
     	y++;
 	}
-	 */
 	printf("Hello, World!\n");
 	print_ants_rooms_links(&data, array);
     ft_first(&data, array, paths, NULL);

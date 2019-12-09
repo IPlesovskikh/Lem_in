@@ -21,14 +21,14 @@ static int		allocate_memory_for_room(t_room	**temp, t_data *data)
 {
 	if (*temp)
 	{
-		if (((*temp)->next = malloc(sizeof(t_room))) == NULL)
+		if (((*temp)->next = (t_room*)malloc(sizeof(t_room))) == NULL)
 			return (-1);
 		(*temp)->next->child = NULL;
 		(*temp) = (*temp)->next;
 	}
 	else
 	{
-		if ((data->rooms = malloc(sizeof(t_room))) == NULL)
+		if ((data->rooms = (t_room*)malloc(sizeof(t_room))) == NULL)
 			return (-1);
 		(*temp) = data->rooms;
 		(*temp)->child = NULL;

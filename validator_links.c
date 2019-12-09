@@ -21,16 +21,19 @@ int		check_links(t_link *link, t_link *temp_link)
 
 int 	ft_create_link(t_link **temp_link, t_data *data)
 {
+	t_link	*temp;
+
 	if (data->links)
 	{
-		if (((*temp_link)->next = malloc(sizeof(t_link))) == NULL)
+		if ((temp = (t_link*)malloc(sizeof(t_link))) == NULL)
 			return (-1);
+		(*temp_link)->next = temp;
 		(*temp_link)->next->prev = (*temp_link);
 		(*temp_link) = (*temp_link)->next;
 	}
 	else
 	{
-		if ((data->links = malloc(sizeof(t_link))) == NULL)
+		if ((data->links = (t_link*)malloc(sizeof(t_link))) == NULL)
 			return (-1);
 		(*temp_link) = data->links;
 		(*temp_link)->prev = NULL;

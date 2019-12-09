@@ -17,7 +17,7 @@ static void sort_childs(t_room **array, t_room *end, t_child *parent)
 				parent->prev = parent->next;
 				parent->next = parent->next->next;
 				if (parent->next)
-					parent->next = parent->prev->next;
+					parent->next->prev = parent;
 				parent->prev->next = parent;
 			}
 			else
@@ -53,6 +53,7 @@ static int create_path(t_data *data, int **path, t_room **array, int max, t_chil
 {
 	int 	i;
 	t_room	*temp;
+	int 	y;
 
 	if (((*path) = (int*)malloc(sizeof(int) * (max + 4))) == NULL)
 		return (-1);
@@ -89,7 +90,16 @@ static int create_path(t_data *data, int **path, t_room **array, int max, t_chil
 		 */
 
 	data->total_paths++;
-	return (1);
+	/*
+	y = 0;
+	while (*path[y] != -1)         ///!!!!! я когда удаляю звено и потом queu использую ???
+	{
+		printf("%i ", *path[y]);
+		y++;
+	}
+	printf("\n");
+	*/
+	 return (1);
 }
 
 int		check_forks(int **paths, int checked, int max)

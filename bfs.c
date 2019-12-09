@@ -68,6 +68,6 @@ int				bfs(t_data *data, t_room **array, int **queue)
 		}
 		printf("\n");
 	}
-	 */
+	*/
 	return (0); // очередь не очищаю... не так ли ?
 }
