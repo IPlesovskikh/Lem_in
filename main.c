@@ -86,6 +86,7 @@ int main()
 	paths[data.end->input] = NULL;
 	while (++i < data.end->input)
 		paths[i] = NULL;
+	/*
 	i = -1;
 	while (queue[++i][0] != -1)
 	{
@@ -103,23 +104,23 @@ int main()
 		temp = temp->next;
 	}
 	printf("\n");
+	*/
 	if (get_path(&data, array, paths) == -1)
 		return (-1);
 	y = 0;
 	while (paths[y] != NULL)         ///!!!!! я когда удаляю звено и потом queu использую ???
 	{
-    	i = 0;
+    	i = 1;
     	while (paths[y][i] != -1) // ошибка i = 0; y = 13;
 		{
-			printf("%i ", paths[y][i]);
+			printf("%s ", array[paths[y][i]]->name);
 			i++;
 		}
     	printf("\n");
     	y++;
 	}
-
 	printf("Hello, World!\n");
-	print_ants_rooms_links(&data, array);
+	//print_ants_rooms_links(&data, array);
     ft_first(&data, array, paths, NULL);
     return 0;
 }
