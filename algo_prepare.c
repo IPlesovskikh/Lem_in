@@ -400,7 +400,7 @@ int			algo_prepare_graph(t_data *data,t_room **array,int **queue)
 	//del_queue(array, queue);
 	del_input_forks(data, array, 0, queue);
 	delete_no_one_link(data, array, queue);
-	delete_no_lvl_from_end(data, array);
+	//delete_no_lvl_from_end(data, array);
 	return (0);
 }
 /*

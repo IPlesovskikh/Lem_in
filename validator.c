@@ -76,6 +76,7 @@ int		get_lines(t_lines *lines, int fd)
 
 int		parse(t_data *data, t_lines *lines, int i)
 {
+	t_link	*temp;
 	while (lines && i == 0)
 	{
 		if (lines->line[0] == '#' && lines->line[1] == '#') // а если три подряд то что ?

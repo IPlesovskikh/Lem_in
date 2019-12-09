@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ivanplesovskih/Desktop/Lem_in
+# Install script for directory: /Users/pdonnie/CLionProjects/Lem_in_final2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/ivanplesovskih/Desktop/Lem_in/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/pdonnie/CLionProjects/Lem_in_final2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

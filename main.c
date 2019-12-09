@@ -20,7 +20,7 @@ void 	print_ants_rooms_links(t_data *data, t_room **array)
 	temp_link = data->links;
 	while (temp_link != NULL)
 	{
-		printf("%s-%s\n", array[temp_link->a]->name, array[temp_link->b]->name);
+		printf("%s-%s\n", array[temp_link->a]->name, array[temp_link->b]->name); //  a = b = 32677 prev = error, next = a = 25 b = 0 (prev у некст тоже error)
 		temp_link = temp_link->next;
 	}
 	printf("\n");
@@ -62,6 +62,7 @@ int main()
 	int 	y;
 	int 	i;
 	int 	**queue;
+	t_link	*temp;
 
 
     fd = open("../mapp", O_RDONLY); //как сделать чтобы fd ловил < ?
@@ -84,10 +85,7 @@ int main()
 	i = -1;
 	paths[data.end->input] = NULL;
 	while (++i < data.end->input)
-		paths[data.end->input] = NULL;
-	if (get_path(&data, array, paths) == -1)
-		return (-1);
-	/*
+		paths[i] = NULL;
 	i = -1;
 	while (queue[++i][0] != -1)
 	{
@@ -98,20 +96,28 @@ int main()
 		}
 		printf("\n");
 	}
-	 */
-
+	temp = data.links;
+	while (temp)
+	{
+		printf("%s-%s |", array[temp->a]->name, array[temp->b]->name);
+		temp = temp->next;
+	}
+	printf("\n");
+	if (get_path(&data, array, paths) == -1)
+		return (-1);
 	y = 0;
 	while (paths[y] != NULL)         ///!!!!! я когда удаляю звено и потом queu использую ???
 	{
     	i = 0;
-    	while (paths[y][i] != -1)
+    	while (paths[y][i] != -1) // ошибка i = 0; y = 13;
 		{
-			printf("%i", paths[y][i]);
+			printf("%i ", paths[y][i]);
 			i++;
 		}
     	printf("\n");
     	y++;
 	}
+
 	printf("Hello, World!\n");
 	print_ants_rooms_links(&data, array);
     ft_first(&data, array, paths, NULL);
