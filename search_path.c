@@ -220,12 +220,14 @@ int	get_path(t_data *data, t_room **array, int **paths)
 		{
 			if ((status = create_path(data, &(paths[++i]), array, array[parent->num]->level, parent)) == -1)
 				return (-1);
+			/*
 			if (status == 0)
 			{
 				i--;
 				y++;
 				paths[data->end->input - y] = NULL;
 			}
+			 */
 		}
 		parent = parent->next;
 	}
