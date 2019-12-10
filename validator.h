@@ -54,6 +54,12 @@ typedef	struct		s_link
 	struct s_link 	*prev;
 }					t_link;
 
+typedef struct		s_lines
+{
+	char 			*line;
+	struct s_lines	*next;
+}					t_lines;
+
 typedef struct		s_data
 {
 	int				ants;
@@ -64,7 +70,8 @@ typedef struct		s_data
 	int				total_rooms;
 	int 			total_paths;
 	int 			k;
-	int 			order;
+	int 			order; // это надо ?
+	t_lines 		*first_line_print;
 }					t_data;
 
 typedef struct		s_list
@@ -74,13 +81,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct		s_lines
-{
-	char 			*line;
-	struct s_lines	*next;
-}					t_lines;
-
-int		            validator(t_data *data, int fd);
+t_lines		        *validator(t_data *data, int fd);
 int					check_links(t_link *link, t_link *temp_link);
 int					ft_create_link(t_link **temp_link, t_data *data);
 int					ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines);

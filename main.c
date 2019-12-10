@@ -3,6 +3,15 @@
 
 void 	print_ants_rooms_links(t_data *data, t_room **array)
 {
+	t_lines 	*temp;
+
+	temp = data->first_line_print;
+	while (temp)
+	{
+		printf("%s\n", temp->line);
+		temp = temp->next;
+	}
+	/*
 	t_room		*temp_room;
 	t_link		*temp_link;
 
@@ -23,7 +32,8 @@ void 	print_ants_rooms_links(t_data *data, t_room **array)
 		printf("%s-%s\n", array[temp_link->a]->name, array[temp_link->b]->name); //  a = b = 32677 prev = error, next = a = 25 b = 0 (prev у некст тоже error)
 		temp_link = temp_link->next;
 	}
-	printf("\n");
+	 */
+	printf("\n\n");
 }
 
 void    fill_data(t_data *data)
@@ -37,6 +47,7 @@ void    fill_data(t_data *data)
     data->total_paths = 0;
     data->k = 1;
     data->order = 0;
+    data->first_line_print = NULL;
 }
 
 int 	ft_create_queue(t_data *data, int ***queue)
@@ -63,11 +74,12 @@ int main()
 	int 	i;
 	int 	**queue;
 	t_link	*temp;
+	t_lines	*line;
 
 
     fd = open("../mapp", O_RDONLY); //как сделать чтобы fd ловил < ?
     fill_data(&data);
-    if (validator(&data, fd) == -1)
+    if ((line = validator(&data, fd)) == NULL)
     	return (-1);// дата удалить // универсальная функция + посмотреть случаи когда не успели записать в дата
     close(fd);
 	array = NULL;
@@ -107,6 +119,7 @@ int main()
 	*/
 	if (get_path(&data, array, paths) == -1)
 		return (-1);
+	/*
 	y = 0;
 	while (paths[y] != NULL)         ///!!!!! я когда удаляю звено и потом queu использую ???
 	{
@@ -119,8 +132,9 @@ int main()
     	printf("\n");
     	y++;
 	}
-	printf("Hello, World!\n");
-	//print_ants_rooms_links(&data, array);
+	 */
+	//printf("Hello, World!\n");
+	print_ants_rooms_links(&data, array);
     ft_first(&data, array, paths, NULL);
     return 0;
 }

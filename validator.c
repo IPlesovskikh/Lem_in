@@ -21,7 +21,7 @@ int		ft_check_comment(t_lines **lines)
 	return (0);
 }
 
-int		get_ants(t_data	*data, int fd)
+int		get_ants(t_data	*data, int fd, t_lines **lines)
 {
 	char	*line;
 	int 	i;
@@ -31,12 +31,23 @@ int		get_ants(t_data	*data, int fd)
 	while (status == 2 && (status = get_next_line(fd, &line)) > 0)
 	{
 		if (line[0] == '#' && line[1] != '#')
-		{
 			status = 2;
-			free(line);
+		if (*lines)
+		{
+			(*lines)->next = (t_lines*)malloc(sizeof(t_lines));
+			(*lines)->line = line;
+			(*lines) = (*lines)->next;
+			(*lines)->next = NULL;
 		}
-	}// если меньше 0 то выйти ?
-	if (status == -1 || line == NULL)
+		else
+		{
+			(*lines) = (t_lines*)malloc(sizeof(t_lines));
+			(*lines)->line = line;
+			(*lines)->next = NULL;
+			data->first_line_print = (*lines);
+		}
+	}
+	if (status <= 0)
 		return (-1);
 	i = 0;
 	if (line[i] == '+' || line[i] == '-')
@@ -49,34 +60,35 @@ int		get_ants(t_data	*data, int fd)
 	}
 	if ((data->ants = ft_atoi(line)) == 0 && line[0] != '0' && line[1] != '\0')
 		return (-1);
-	free(line);
 	return (0);
 }
 
-int		get_lines(t_lines *lines, int fd)
+t_lines		*get_lines(t_lines *lines, int fd)
 {
 	char 	*line;
+	int 	status;
+	t_lines	*line_start_rooms;
 
-	while (get_next_line(fd, &line) > 0) // -1 ошибка как обработать ? отшрифить line не забыть
+	while (lines->next)
+		lines = lines->next;
+	line_start_rooms = lines;
+	while ((status = get_next_line(fd, &line)) > 0) // -1 ошибка как обработать ? отшрифить line не забыть
 	{
-		if (lines->line)
-        {
-            if ((lines->next = (t_lines*)malloc(sizeof(t_lines))) == NULL)
-                return (-1); // line не забыть отфришить
-            lines->next->line = line;
-            lines = lines->next;
-        }
-		else
-            lines->line = line;
+        if ((lines->next = (t_lines*)malloc(sizeof(t_lines))) == NULL)
+			return (NULL); // line не забыть отфришить
+        lines->next->line = line;
+        lines = lines->next;
         line = NULL;
 	}
+	if (status < 0)
+		return (NULL);
 	lines->next = NULL;
-	return (0);
+	line_start_rooms = line_start_rooms->next;
+	return (line_start_rooms);
 }
 
 int		parse(t_data *data, t_lines *lines, int i)
 {
-	t_link	*temp;
 	while (lines && i == 0)
 	{
 		if (lines->line[0] == '#' && lines->line[1] == '#') // а если три подряд то что ?
@@ -102,19 +114,16 @@ int		parse(t_data *data, t_lines *lines, int i)
 	return (0);
 }
 
-int		validator(t_data *data, int fd)
+t_lines		*validator(t_data *data, int fd)
 {
-	t_lines		lines;
+	t_lines		*lines;
 
-	if (get_ants(data, fd) == -1 || data->ants < 1)
-		return (-1);
-	lines.line = NULL;
-	lines.line = NULL;
-	if (get_lines(&lines, fd) == -1)
-		return (-1); // lines  удалить
-	if (parse(data, &lines, 0) == -1) // lines почистил а строки line  ?
-		return (-1); // lines удалить
-	//сохранить линии которые распечатать->только валидные линии(? если реализую) и без коментов. записать все в одну строку и вывести потом ?
-	// start and end 0 and max int
-	return (0);
+	lines = NULL;
+	if (get_ants(data, fd, &lines) == -1 || data->ants < 1)
+		return (NULL);
+	if ((lines = get_lines(lines, fd)) == NULL)
+		return (NULL); // lines  удалить
+	if (parse(data, lines, 0) == -1) // lines почистил а строки line  ?
+		return (NULL); // lines удалить
+	return (lines);
 }
