@@ -251,10 +251,7 @@ int			algo_prepare_graph(t_data *data,t_room **array,int **queue)
 	if (data->total_rooms == 2)
 		return (0);
     if (data->end->parent == NULL)
-	{
-		printf("Error : no paths from start to end");
-		return (-1);
-	}
+		return (print_error());
 	del_no_lvl(array, queue);
 	calculate_input_and_output(array, queue);
 	delete_no_one_link(data, array, queue);

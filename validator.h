@@ -108,5 +108,11 @@ int					ft_strcmp(const char *s1, const char *s2);
 int					ft_check_comment(t_lines **lines);
 int					create_array_rooms(t_data *data, t_room ***array);
 void	            del_child_or_parent(t_child	**child, int y, t_room **array, int i);
+int 				print_error(void);
+void 				print_ants_rooms_links(t_data *data);
+void    			fill_data(t_data *data);
+int 				ft_create_queue(t_data *data, int ***queue);
+int					create_paths(t_data *data, int ***paths);
+
 
 #endif //INC_42_LEM_IN_VALIDATOR_H

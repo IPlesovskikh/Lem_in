@@ -92,6 +92,9 @@
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/bfs.c">
 			<Option target="lem-in"/>
 		</Unit>
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/create_and_fill_data.c">
+			<Option target="lem-in"/>
+		</Unit>
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/free.c">
 			<Option target="lem-in"/>
 		</Unit>
@@ -126,6 +129,9 @@
 			<Option target="lem-in"/>
 		</Unit>
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/main.c">
+			<Option target="lem-in"/>
+		</Unit>
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/print.c">
 			<Option target="lem-in"/>
 		</Unit>
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/search_path.c">

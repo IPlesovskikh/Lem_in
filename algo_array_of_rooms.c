@@ -6,7 +6,7 @@ int			create_array_rooms(t_data *data, t_room ***array)
 
 	temp = data->rooms;
 	if (((*array) = (t_room **)malloc(sizeof(t_room*) * (data->total_rooms + 1))) == NULL)
-		return (-1);
+		return (print_error());
 	(*array)[data->total_rooms] = NULL;
 	while (temp)
 	{
@@ -51,9 +51,9 @@ int		fill_array_rooms(t_data *data, t_room **array)
 	while (temp != NULL)
 	{
 		if ((add_child(temp->a, array, temp->b)) == -1)
-			return (-1);
+			return (print_error());
 		if ((add_child(temp->b, array, temp->a)) == -1)
-			return (-1);
+			return (print_error());
 		temp = temp->next;
 	}
 	return (0);

@@ -34,14 +34,16 @@ int		get_ants(t_data	*data, int fd, t_lines **lines)
 			status = 2;
 		if (*lines)
 		{
-			(*lines)->next = (t_lines*)malloc(sizeof(t_lines));
+			if (((*lines)->next = (t_lines*)malloc(sizeof(t_lines))) == NULL)
+				return (-1);
 			(*lines)->line = line;
 			(*lines) = (*lines)->next;
 			(*lines)->next = NULL;
 		}
 		else
 		{
-			(*lines) = (t_lines*)malloc(sizeof(t_lines));
+			if (((*lines) = (t_lines*)malloc(sizeof(t_lines))) == NULL)
+				return (-1);
 			(*lines)->line = line;
 			(*lines)->next = NULL;
 			data->first_line_print = (*lines);
@@ -120,10 +122,10 @@ int		validator(t_data *data, int fd)
 
 	lines = NULL;
 	if (get_ants(data, fd, &lines) == -1 || data->ants < 1)
-		return (-1);
+		return (print_error());
 	if ((lines = get_lines(lines, fd)) == NULL)
-		return (-1);
+		return (print_error());
 	if (parse(data, lines, 0) == -1)
-		return (-1);
+		return (print_error());
 	return (0);
 }

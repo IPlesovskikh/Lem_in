@@ -4,7 +4,7 @@
 
 #include "validator.h"
 
-void		ft_put_child(t_child *temp_child, t_room **array, int **queue, int i)
+static void		ft_put_child(t_child *temp_child, t_room **array, int **queue, int i)
 {
 	int 	y;
 	t_child	*temp;

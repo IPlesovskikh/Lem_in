@@ -231,6 +231,33 @@ bfs.c.s:
 	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/bfs.c.s
 .PHONY : bfs.c.s
 
+create_and_fill_data.o: create_and_fill_data.c.o
+
+.PHONY : create_and_fill_data.o
+
+# target to build an object file
+create_and_fill_data.c.o:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/create_and_fill_data.c.o
+.PHONY : create_and_fill_data.c.o
+
+create_and_fill_data.i: create_and_fill_data.c.i
+
+.PHONY : create_and_fill_data.i
+
+# target to preprocess a source file
+create_and_fill_data.c.i:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/create_and_fill_data.c.i
+.PHONY : create_and_fill_data.c.i
+
+create_and_fill_data.s: create_and_fill_data.c.s
+
+.PHONY : create_and_fill_data.s
+
+# target to generate assembly for a file
+create_and_fill_data.c.s:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/create_and_fill_data.c.s
+.PHONY : create_and_fill_data.c.s
+
 free.o: free.c.o
 
 .PHONY : free.o
@@ -555,6 +582,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/main.c.s
 .PHONY : main.c.s
 
+print.o: print.c.o
+
+.PHONY : print.o
+
+# target to build an object file
+print.c.o:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/print.c.o
+.PHONY : print.c.o
+
+print.i: print.c.i
+
+.PHONY : print.i
+
+# target to preprocess a source file
+print.c.i:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/print.c.i
+.PHONY : print.c.i
+
+print.s: print.c.s
+
+.PHONY : print.s
+
+# target to generate assembly for a file
+print.c.s:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/print.c.s
+.PHONY : print.c.s
+
 search_path.o: search_path.c.o
 
 .PHONY : search_path.o
@@ -711,6 +765,9 @@ help:
 	@echo "... bfs.o"
 	@echo "... bfs.i"
 	@echo "... bfs.s"
+	@echo "... create_and_fill_data.o"
+	@echo "... create_and_fill_data.i"
+	@echo "... create_and_fill_data.s"
 	@echo "... free.o"
 	@echo "... free.i"
 	@echo "... free.s"
@@ -747,6 +804,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... print.o"
+	@echo "... print.i"
+	@echo "... print.s"
 	@echo "... search_path.o"
 	@echo "... search_path.i"
 	@echo "... search_path.s"

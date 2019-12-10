@@ -124,8 +124,9 @@ int		get_path(t_data *data, t_room **array, int **paths)
 		sort_childs(array, end, end->parent);
 	i = 0;
 	parent = end->parent;
-	if ((create_path(data, &(paths[i]), array, array[parent->num]->level, parent)) == -1)
-		return (-1);
+	if ((create_path(data, &(paths[i]), array,
+			array[parent->num]->level, parent)) == -1)
+		return (print_error());
 	parent = parent->next;
 	start = data->start->num;
 	while (parent)
@@ -140,8 +141,9 @@ int		get_path(t_data *data, t_room **array, int **paths)
 			temp = array[temp->num]->parent;
 		}
 		if (status == 1)
-			if ((status = create_path(data, &(paths[++i]), array, array[parent->num]->level, parent)) == -1)
-				return (-1);
+			if ((status = create_path(data, &(paths[++i]),
+					array, array[parent->num]->level, parent)) == -1)
+				return (print_error());
 		parent = parent->next;
 	}
 	while (++i < end->input)

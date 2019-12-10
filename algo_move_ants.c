@@ -1,6 +1,3 @@
-//
-// Created by Peggie Donnie on 2019-12-01.
-//
 
 #include "validator.h"
 
