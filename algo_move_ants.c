@@ -3,16 +3,7 @@
 //
 
 #include "validator.h"
-/*
-void	move_ants(t_room **array, int *paths, int j, int k)
-{
-	j++;
-	if (j == paths[0])
-		return ;
-	else
-		printf("L%d-%s ", k, array[paths[j]]->name);
-}
-*/
+
 t_ant	*ft_create_ant(int i, int k, t_ant *prev_ant)
 {
 	t_ant	*ant;

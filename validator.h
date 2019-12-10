@@ -89,13 +89,13 @@ int					get_links(t_data *data, t_lines *lines);
 int 				get_commande(t_data *data, t_lines **lines);
 int 				get_rooms(int i, int i2, t_data *data, t_lines *lines);
 int					bfs(t_data *data, t_room **array, int **queue);
-void				fill_array_rooms(t_data *data, t_room **array);
+int					fill_array_rooms(t_data *data, t_room **array);
 int					algo_prepare_graph(t_data *data, t_room **array, int **queue);
 int					get_path(t_data *data, t_room **array, int **paths);
 void 				ft_first(t_data *data, t_room **array, int **paths, t_ant *ant);
-int 				ft_free(t_data *data, t_room **array);
+int 				ft_free(t_data *data, t_room ***array, int ***numbers);
 
-int					get_next_line(const int fd, t_room **line);
+int					get_next_line(const int fd, char **line);
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlen(const char *s);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);

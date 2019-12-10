@@ -55,7 +55,7 @@ int		get_ants(t_data	*data, int fd, t_lines **lines)
 	while (line[i] != '\0')
 	{
 		if (ft_isdigit(line[i]) == 0)
-			return(-1); // line отфришить
+			return(-1);
 		i++;
 	}
 	if ((data->ants = ft_atoi(line)) == 0 && line[0] != '0' && line[1] != '\0')
@@ -75,7 +75,7 @@ t_lines		*get_lines(t_lines *lines, int fd)
 	while ((status = get_next_line(fd, &line)) > 0) // -1 ошибка как обработать ? отшрифить line не забыть
 	{
         if ((lines->next = (t_lines*)malloc(sizeof(t_lines))) == NULL)
-			return (NULL); // line не забыть отфришить
+			return (NULL);
         lines->next->line = line;
         lines = lines->next;
         line = NULL;
@@ -122,8 +122,8 @@ int		validator(t_data *data, int fd)
 	if (get_ants(data, fd, &lines) == -1 || data->ants < 1)
 		return (-1);
 	if ((lines = get_lines(lines, fd)) == NULL)
-		return (-1); // lines  удалить
-	if (parse(data, lines, 0) == -1) // lines почистил а строки line  ?
-		return (-1); // lines удалить
+		return (-1);
+	if (parse(data, lines, 0) == -1)
+		return (-1);
 	return (0);
 }

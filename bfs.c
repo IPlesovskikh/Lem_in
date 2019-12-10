@@ -46,7 +46,7 @@ int				bfs(t_data *data, t_room **array, int **queue)
 	y = 0;
 	queue[0][0] = data->start->num;
 	queue[0][1] = -1;
-	while (queue[i][0] != -1) //temp_room->level != 2147483647 i < data->total_rooms && temp_room
+	while (queue[i][0] != -1)
 	{
 		ft_put_child(temp_room->child, array, queue, i + 1);
 		if (queue[i][++y] != -1 && i != 0)
@@ -57,17 +57,5 @@ int				bfs(t_data *data, t_room **array, int **queue)
 			temp_room = (queue[++i][0] != -1) ? array[queue[i][0]] : NULL;
 		}
 	}
-	/*
-	i = -1;
-	while (queue[++i][0] != -1)
-	{
-		y = -1;
-		while (queue[i][++y] != -1)
-		{
-			printf("%d ", queue[i][y]);
-		}
-		printf("\n");
-	}
-	*/
-	return (0); // очередь не очищаю... не так ли ?
+	return (0);
 }
