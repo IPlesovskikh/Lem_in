@@ -81,7 +81,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-t_lines		        *validator(t_data *data, int fd);
+int		        	validator(t_data *data, int fd);
 int					check_links(t_link *link, t_link *temp_link);
 int					ft_create_link(t_link **temp_link, t_data *data);
 int					ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines);
@@ -93,8 +93,9 @@ void				fill_array_rooms(t_data *data, t_room **array);
 int					algo_prepare_graph(t_data *data, t_room **array, int **queue);
 int					get_path(t_data *data, t_room **array, int **paths);
 void 				ft_first(t_data *data, t_room **array, int **paths, t_ant *ant);
+int 				ft_free(t_data *data, t_room **array);
 
-int					get_next_line(const int fd, char **line);
+int					get_next_line(const int fd, t_room **line);
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlen(const char *s);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);

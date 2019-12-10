@@ -114,16 +114,16 @@ int		parse(t_data *data, t_lines *lines, int i)
 	return (0);
 }
 
-t_lines		*validator(t_data *data, int fd)
+int		validator(t_data *data, int fd)
 {
 	t_lines		*lines;
 
 	lines = NULL;
 	if (get_ants(data, fd, &lines) == -1 || data->ants < 1)
-		return (NULL);
+		return (-1);
 	if ((lines = get_lines(lines, fd)) == NULL)
-		return (NULL); // lines  удалить
+		return (-1); // lines  удалить
 	if (parse(data, lines, 0) == -1) // lines почистил а строки line  ?
-		return (NULL); // lines удалить
-	return (lines);
+		return (-1); // lines удалить
+	return (0);
 }
