@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "validator.h"
 
-void 	print_ants_rooms_links(t_data *data, t_room **array)
+void 	print_ants_rooms_links(t_data *data)
 {
 	t_lines 	*temp;
 
@@ -33,7 +33,7 @@ void 	print_ants_rooms_links(t_data *data, t_room **array)
 		temp_link = temp_link->next;
 	}
 	 */
-	printf("\n\n");
+	printf("\n"); // одна линия тесты проходит две линии не проходит
 }
 
 void    fill_data(t_data *data)
@@ -70,10 +70,10 @@ int main()
     int     fd;
 	t_room	**array;
 	int 	**paths;
-	int 	y;
+	//int 	y;
 	int 	i;
 	int 	**queue;
-	t_link	*temp;
+	//t_link	*temp;
 	t_lines	*line;
 
 
@@ -117,8 +117,6 @@ int main()
 	}
 	printf("\n");
 	*/
-	if (get_path(&data, array, paths) == -1)
-		return (-1);
 	/*
 	y = 0;
 	while (paths[y] != NULL)         ///!!!!! я когда удаляю звено и потом queu использую ???
@@ -134,7 +132,9 @@ int main()
 	}
 	 */
 	//printf("Hello, World!\n");
-	print_ants_rooms_links(&data, array);
+	if (get_path(&data, array, paths) == -1)
+		return (-1);
+	print_ants_rooms_links(&data);
     ft_first(&data, array, paths, NULL);
     return 0;
 }

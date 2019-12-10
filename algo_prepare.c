@@ -388,8 +388,10 @@ void		del_queue(t_room **array, int **queue)
 int			algo_prepare_graph(t_data *data,t_room **array,int **queue)
 {
 	del_same_lvl_and_get_directions(data, array, queue);
-    delete_lvl_from_end(data, array);// зачем это ? вроде и так уже нет // тут падает - не потому как в бфс я удаляю на последнем уровне но не удаляю у тех кого удлали, а что с предпоследней строчкой она правильная ?
-	if (data->end->parent == NULL)
+	if (data->total_rooms == 2)
+		return (0);
+	delete_lvl_from_end(data, array);// зачем это ? вроде и так уже нет // тут падает - не потому как в бфс я удаляю на последнем уровне но не удаляю у тех кого удлали, а что с предпоследней строчкой она правильная ?
+    if (data->end->parent == NULL)
 	{
 		printf("Error : no paths from start to end");
 		return (-1);

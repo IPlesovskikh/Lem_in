@@ -3,7 +3,7 @@
 //
 
 #include "validator.h"
-
+/*
 void	move_ants(t_room **array, int *paths, int j, int k)
 {
 	j++;
@@ -12,7 +12,7 @@ void	move_ants(t_room **array, int *paths, int j, int k)
 	else
 		printf("L%d-%s ", k, array[paths[j]]->name);
 }
-
+*/
 t_ant	*ft_create_ant(int i, int k, t_ant *prev_ant)
 {
 	t_ant	*ant;
@@ -89,13 +89,28 @@ void 	ft_first(t_data *data, t_room **array, int **paths, t_ant *ant)
 	}
 	else
 	{
-		tmp = ant;
-		ant = ant->next;
-		if (ant != NULL)
-			ant->prev = tmp->prev;
-		if (tmp->prev != NULL)
-			(tmp->prev)->next = ant;
-		free(tmp);
+		if (ant != NULL && ant->next != NULL)
+		{
+			tmp = ant;
+			ant = ant->next;
+			if (ant != NULL)
+				ant->prev = tmp->prev;
+			if (tmp->prev != NULL)
+				(tmp->prev)->next = ant;
+			free(tmp);
+		}
+		else
+		{
+			tmp = ant;
+			if (ant->prev == NULL && ant->next == NULL)
+			{
+				free(ant);
+				return ;
+			}
+			ant = ant->prev;
+			ant->next = NULL;
+			free(tmp);
+		}
 	}
 	if (ant == NULL)
 		return ;
