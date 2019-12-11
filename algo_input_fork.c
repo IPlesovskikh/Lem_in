@@ -53,7 +53,8 @@ void		del_input_forks(t_data *data, t_room **array, int i, int **queue)
 		y = -1;
 		while (queue[i][++y] != -1)
 		{
-			if (array[queue[i][y]]->num != data->end->num && array[queue[i][y]]->input > 1)
+			if (array[queue[i][y]]->num != data->end->num
+				&& array[queue[i][y]]->input > 1)
 			{
 				parent = array[queue[i][y]]->parent;
 				while (status == 0 && parent)
@@ -63,9 +64,7 @@ void		del_input_forks(t_data *data, t_room **array, int i, int **queue)
 					else
 						status = 1;
 				}
-				if (status == 1)
-					delete_fork(array, queue[i][y], parent);
-				else
+				(status == 1) ? delete_fork(array, queue[i][y], parent) :
 					delete_fork(array, queue[i][y], array[queue[i][y]]->parent);
 			}
 		}

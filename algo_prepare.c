@@ -77,29 +77,6 @@ static void	del_no_lvl(t_room **array, int **queue)
 	}
 }
 
-static void	calculate_input_and_output(t_room **array, int **queue)
-{
-	int 	i;
-	int 	y;
-	t_child	*child;
-
-	i = -1;
-	while (queue[++i][0] != -1)
-	{
-		y = -1;
-		while (queue[i][++y] != -1)
-		{
-			child = array[queue[i][y]]->child;
-			while (child)
-			{
-				array[queue[i][y]]->output++;
-				array[child->num]->input++;
-				child = child->next;
-			}
-		}
-	}
-}
-
 static void		delete_no_one_link(t_data *data, t_room **array, int **queue, int i)
 {
 	int 	y;
@@ -114,7 +91,8 @@ static void		delete_no_one_link(t_data *data, t_room **array, int **queue, int i
 			child = array[queue[i][y]]->child;
 			while (child)
 			{
-				if (array[child->num]->num != data->end->num && array[child->num]->output == 0)
+				if (array[child->num]->num != data->end->num &&
+						array[child->num]->output == 0)
 				{
 					temp_parent = array[child->num]->parent;
 					del_child_or_parent(&temp_parent, queue[i][y], array, child->num);

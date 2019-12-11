@@ -116,5 +116,6 @@ int					create_paths(t_data *data, int ***paths);
 int					skip_comments(int status, t_data *data, t_lines **lines, int fd);
 void				ft_fill_room(t_room *room);
 void				del_input_forks(t_data *data, t_room **array, int i, int **queue);
+void				calculate_input_and_output(t_room **array, int **queue);
 
 #endif //INC_42_LEM_IN_VALIDATOR_H

@@ -1,6 +1,17 @@
 
 #include "validator.h"
 
+static void	change_first_element(t_room *end, t_child *parent)
+{
+	end->parent = end->parent->next;
+	parent->prev = end->parent;
+	parent->next = end->parent->next;
+	if (parent->next)
+		parent->next->prev = parent;
+	end->parent->next = parent;
+	end->parent->prev = NULL;
+}
+
 static void sort_childs(t_room **array, t_room *end, t_child *parent)
 {
 	while (parent->next)
@@ -18,15 +29,7 @@ static void sort_childs(t_room **array, t_room *end, t_child *parent)
 				parent->prev->next = parent;
 			}
 			else
-			{
-				end->parent = end->parent->next;
-				parent->prev = end->parent;
-				parent->next = end->parent->next;
-				if (parent->next)
-					parent->next->prev = parent;
-				end->parent->next = parent;
-				end->parent->prev = NULL;
-			}
+				change_first_element(end, parent);
 			parent = end->parent;
 		}
 		else
@@ -105,44 +108,46 @@ void	check_path(t_room **array, int start, t_child *parent, int end)
 	}
 }
 
+int		iteration_get_path(t_room **array, int **paths, t_child	*parent, int i)
+{
+	int 	status;
+	t_child	*temp;
+
+	temp = parent;
+	status = 1;
+	while (status == 1 && temp->num != array[paths[0][1]]->num)
+	{
+		if (array[temp->num]->output > 1)
+			if (check_forks(paths, temp->num, i + 1) == -1)
+				status = -1;
+		temp = array[temp->num]->parent;
+	}
+	return (status);
+}
+
 int		get_path(t_data *data, t_room **array, int **paths)
 {
-	t_room	*end;
 	t_child	*parent;
-	t_child	*temp;
-	int 	start;
-	int 	status;
 	int 	i;
 
-	end = data->end;
-	check_path(array, data->start->num, end->parent, end->num);
-	if (end->parent->next)
-		sort_childs(array, end, end->parent);
+	check_path(array, data->start->num, data->end->parent, data->end->num);
+	if (data->end->parent->next)
+		sort_childs(array, data->end, data->end->parent);
 	i = 0;
-	parent = end->parent;
+	parent = data->end->parent;
 	if ((create_path(data, &(paths[i]), array,
 			array[parent->num]->level, parent)) == -1)
 		return (print_error());
 	parent = parent->next;
-	start = data->start->num;
 	while (parent)
 	{
-		temp = parent;
-		status = 1;
-		while (status == 1 && temp->num != start)
-		{
-			if (array[temp->num]->output > 1)
-				if (check_forks(paths, temp->num, i + 1) == -1)
-					status = -1;
-			temp = array[temp->num]->parent;
-		}
-		if (status == 1)
-			if ((status = create_path(data, &(paths[++i]),
+		if ((iteration_get_path(array, paths, parent, i)) == 1)
+			if ((create_path(data, &(paths[++i]),
 					array, array[parent->num]->level, parent)) == -1)
 				return (print_error());
 		parent = parent->next;
 	}
-	while (++i < end->input)
+	while (++i < data->end->input)
 		paths[i] = NULL;
 	return (0);
 }

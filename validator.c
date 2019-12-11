@@ -53,7 +53,7 @@ static int		parse(t_data *data, t_lines *lines, int i)
 {
 	while (lines && i == 0)
 	{
-		if (lines->line[0] == '#' && lines->line[1] == '#') // а если три подряд то что ?
+		if (lines->line[0] == '#' && lines->line[1] == '#')
 		{
 		    if (get_commande(data, &lines) == -1)
 				i = -2;

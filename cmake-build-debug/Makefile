@@ -150,6 +150,33 @@ algo_array_of_rooms.c.s:
 	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_array_of_rooms.c.s
 .PHONY : algo_array_of_rooms.c.s
 
+algo_calc_input_output.o: algo_calc_input_output.c.o
+
+.PHONY : algo_calc_input_output.o
+
+# target to build an object file
+algo_calc_input_output.c.o:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_calc_input_output.c.o
+.PHONY : algo_calc_input_output.c.o
+
+algo_calc_input_output.i: algo_calc_input_output.c.i
+
+.PHONY : algo_calc_input_output.i
+
+# target to preprocess a source file
+algo_calc_input_output.c.i:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_calc_input_output.c.i
+.PHONY : algo_calc_input_output.c.i
+
+algo_calc_input_output.s: algo_calc_input_output.c.s
+
+.PHONY : algo_calc_input_output.s
+
+# target to generate assembly for a file
+algo_calc_input_output.c.s:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_calc_input_output.c.s
+.PHONY : algo_calc_input_output.c.s
+
 algo_del_child.o: algo_del_child.c.o
 
 .PHONY : algo_del_child.o
@@ -810,6 +837,9 @@ help:
 	@echo "... algo_array_of_rooms.o"
 	@echo "... algo_array_of_rooms.i"
 	@echo "... algo_array_of_rooms.s"
+	@echo "... algo_calc_input_output.o"
+	@echo "... algo_calc_input_output.i"
+	@echo "... algo_calc_input_output.s"
 	@echo "... algo_del_child.o"
 	@echo "... algo_del_child.i"
 	@echo "... algo_del_child.s"
