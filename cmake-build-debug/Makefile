@@ -231,6 +231,33 @@ bfs.c.s:
 	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/bfs.c.s
 .PHONY : bfs.c.s
 
+comments.o: comments.c.o
+
+.PHONY : comments.o
+
+# target to build an object file
+comments.c.o:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/comments.c.o
+.PHONY : comments.c.o
+
+comments.i: comments.c.i
+
+.PHONY : comments.i
+
+# target to preprocess a source file
+comments.c.i:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/comments.c.i
+.PHONY : comments.c.i
+
+comments.s: comments.c.s
+
+.PHONY : comments.s
+
+# target to generate assembly for a file
+comments.c.s:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/comments.c.s
+.PHONY : comments.c.s
+
 create_and_fill_data.o: create_and_fill_data.c.o
 
 .PHONY : create_and_fill_data.o
@@ -663,33 +690,6 @@ validator.c.s:
 	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator.c.s
 .PHONY : validator.c.s
 
-validator_free.o: validator_free.c.o
-
-.PHONY : validator_free.o
-
-# target to build an object file
-validator_free.c.o:
-	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_free.c.o
-.PHONY : validator_free.c.o
-
-validator_free.i: validator_free.c.i
-
-.PHONY : validator_free.i
-
-# target to preprocess a source file
-validator_free.c.i:
-	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_free.c.i
-.PHONY : validator_free.c.i
-
-validator_free.s: validator_free.c.s
-
-.PHONY : validator_free.s
-
-# target to generate assembly for a file
-validator_free.c.s:
-	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_free.c.s
-.PHONY : validator_free.c.s
-
 validator_links.o: validator_links.c.o
 
 .PHONY : validator_links.o
@@ -765,6 +765,9 @@ help:
 	@echo "... bfs.o"
 	@echo "... bfs.i"
 	@echo "... bfs.s"
+	@echo "... comments.o"
+	@echo "... comments.i"
+	@echo "... comments.s"
 	@echo "... create_and_fill_data.o"
 	@echo "... create_and_fill_data.i"
 	@echo "... create_and_fill_data.s"
@@ -813,9 +816,6 @@ help:
 	@echo "... validator.o"
 	@echo "... validator.i"
 	@echo "... validator.s"
-	@echo "... validator_free.o"
-	@echo "... validator_free.i"
-	@echo "... validator_free.s"
 	@echo "... validator_links.o"
 	@echo "... validator_links.i"
 	@echo "... validator_links.s"

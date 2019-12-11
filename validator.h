@@ -113,6 +113,7 @@ void 				print_ants_rooms_links(t_data *data);
 void    			fill_data(t_data *data);
 int 				ft_create_queue(t_data *data, int ***queue);
 int					create_paths(t_data *data, int ***paths);
+int					skip_comments(int status, t_data *data, t_lines **lines, int fd);
 
 
 #endif //INC_42_LEM_IN_VALIDATOR_H
