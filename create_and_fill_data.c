@@ -46,3 +46,16 @@ int		create_paths(t_data *data, int ***paths)
 		(*paths)[i] = NULL;
 	return (0);
 }
+
+void	ft_fill_room(t_room *room)
+{
+	room->next = NULL;
+	room->name = NULL;
+	room->x = 0;
+	room->y = 0;
+	room->level = -1;
+	room->input = 0;
+	room->output = 0;
+	room->child = NULL;
+	room->parent = NULL;
+}

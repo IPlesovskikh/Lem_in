@@ -1,7 +1,4 @@
-//
-// Created by Peggie Donnie on 2019-11-30.
-//
-
+/
 #include "validator.h"
 
 static void sort_childs(t_room **array, t_room *end, t_child *parent)

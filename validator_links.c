@@ -1,6 +1,3 @@
-//
-// Created by Peggie Donnie on 26/11/2019.
-//
 
 #include "validator.h"
 
@@ -112,4 +109,3 @@ int		get_links(t_data *data, t_lines *lines)
 	}
 	return (0);
 }
-

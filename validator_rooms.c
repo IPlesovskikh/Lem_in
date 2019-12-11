@@ -1,6 +1,4 @@
-//
-// Created by Peggie Donnie on 26/11/2019.
-//
+
 #include "validator.h"
 
 static int		check_coordinates(t_room *temp, t_room *check)
@@ -8,10 +6,7 @@ static int		check_coordinates(t_room *temp, t_room *check)
 	while (temp->num != check->num)
 	{
 		if ((temp->x == check->x) && (temp->y == check->y))
-		{
-			printf("Error: two rooms have the same coordinates : x = %d y = %d\n", temp->x, temp->y);
 			return (-1);
-		}
 		check = check->next;
 	}
 	return (0);
@@ -49,15 +44,7 @@ static t_room	*create_room(t_data *data, t_lines *lines, int i)
 	temp->num = data->order;
 	data->order++;
 	data->total_rooms = data->order;
-	temp->next = NULL;
-	temp->name = NULL;
-	temp->x = 0;
-	temp->y = 0;
-	temp->level = -1;
-	temp->input = 0;
-	temp->output = 0;
-	temp->child = NULL;
-	temp->parent = NULL;
+	ft_fill_room(temp);
 	temp->name = ft_strsub(lines->line, 0, i);
 	check = data->rooms;
 	while (check->num != temp->num)
