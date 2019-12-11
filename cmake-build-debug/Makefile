@@ -150,6 +150,60 @@ algo_array_of_rooms.c.s:
 	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_array_of_rooms.c.s
 .PHONY : algo_array_of_rooms.c.s
 
+algo_del_child.o: algo_del_child.c.o
+
+.PHONY : algo_del_child.o
+
+# target to build an object file
+algo_del_child.c.o:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_del_child.c.o
+.PHONY : algo_del_child.c.o
+
+algo_del_child.i: algo_del_child.c.i
+
+.PHONY : algo_del_child.i
+
+# target to preprocess a source file
+algo_del_child.c.i:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_del_child.c.i
+.PHONY : algo_del_child.c.i
+
+algo_del_child.s: algo_del_child.c.s
+
+.PHONY : algo_del_child.s
+
+# target to generate assembly for a file
+algo_del_child.c.s:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_del_child.c.s
+.PHONY : algo_del_child.c.s
+
+algo_input_fork.o: algo_input_fork.c.o
+
+.PHONY : algo_input_fork.o
+
+# target to build an object file
+algo_input_fork.c.o:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_input_fork.c.o
+.PHONY : algo_input_fork.c.o
+
+algo_input_fork.i: algo_input_fork.c.i
+
+.PHONY : algo_input_fork.i
+
+# target to preprocess a source file
+algo_input_fork.c.i:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_input_fork.c.i
+.PHONY : algo_input_fork.c.i
+
+algo_input_fork.s: algo_input_fork.c.s
+
+.PHONY : algo_input_fork.s
+
+# target to generate assembly for a file
+algo_input_fork.c.s:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_input_fork.c.s
+.PHONY : algo_input_fork.c.s
+
 algo_move_ants.o: algo_move_ants.c.o
 
 .PHONY : algo_move_ants.o
@@ -756,6 +810,12 @@ help:
 	@echo "... algo_array_of_rooms.o"
 	@echo "... algo_array_of_rooms.i"
 	@echo "... algo_array_of_rooms.s"
+	@echo "... algo_del_child.o"
+	@echo "... algo_del_child.i"
+	@echo "... algo_del_child.s"
+	@echo "... algo_input_fork.o"
+	@echo "... algo_input_fork.i"
+	@echo "... algo_input_fork.s"
 	@echo "... algo_move_ants.o"
 	@echo "... algo_move_ants.i"
 	@echo "... algo_move_ants.s"

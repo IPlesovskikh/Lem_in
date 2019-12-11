@@ -83,6 +83,12 @@
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/algo_array_of_rooms.c">
 			<Option target="lem-in"/>
 		</Unit>
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/algo_del_child.c">
+			<Option target="lem-in"/>
+		</Unit>
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/algo_input_fork.c">
+			<Option target="lem-in"/>
+		</Unit>
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/algo_move_ants.c">
 			<Option target="lem-in"/>
 		</Unit>
