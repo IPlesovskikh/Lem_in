@@ -86,6 +86,9 @@
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/algo_calc_input_output.c">
 			<Option target="lem-in"/>
 		</Unit>
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/algo_check_from_end_sort_childs_of_end.c">
+			<Option target="lem-in"/>
+		</Unit>
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/algo_del_child.c">
 			<Option target="lem-in"/>
 		</Unit>
@@ -96,6 +99,9 @@
 			<Option target="lem-in"/>
 		</Unit>
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/algo_prepare.c">
+			<Option target="lem-in"/>
+		</Unit>
+		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/algo_search_path.c">
 			<Option target="lem-in"/>
 		</Unit>
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/bfs.c">
@@ -144,9 +150,6 @@
 			<Option target="lem-in"/>
 		</Unit>
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/print.c">
-			<Option target="lem-in"/>
-		</Unit>
-		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/search_path.c">
 			<Option target="lem-in"/>
 		</Unit>
 		<Unit filename="/Users/pdonnie/CLionProjects/Lem_in_final2/validator.c">

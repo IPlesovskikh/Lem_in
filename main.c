@@ -23,12 +23,10 @@ int main()
 	if (ft_create_queue(&data, &queue) == -1)
 		return (ft_free(&data, &array, &queue));
 	bfs(&data, array, queue);
-	if (algo_prepare_graph(&data, array, queue) == -1)
+	if (algo_prepare_graph(&data, array, queue) == -1 ||
+		create_paths(&data, &paths) == -1 ||
+			get_path(&data, array, paths) == -1)
 		return (ft_free(&data, &array, &queue));
-	if (create_paths(&data, &paths) == -1)
-		return (ft_free(&data, &array, &queue));
-	if (get_path(&data, array, paths) == -1)
-		return (ft_free(&data, &array, &paths));
 	print_ants_rooms_links(&data);
 	move_ants(&data, array, paths, NULL); // t_ant	*ant; почистить и exit c malloc
     return (ft_free(&data, &array, &paths));

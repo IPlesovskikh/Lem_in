@@ -117,5 +117,7 @@ int					skip_comments(int status, t_data *data, t_lines **lines, int fd);
 void				ft_fill_room(t_room *room);
 void				del_input_forks(t_data *data, t_room **array, int i, int **queue);
 void				calculate_input_and_output(t_room **array, int **queue);
+void				check_path(t_room **array, int start, t_child *parent, int end);
+void 				sort_childs(t_room **array, t_room *end, t_child *parent);
 
 #endif //INC_42_LEM_IN_VALIDATOR_H

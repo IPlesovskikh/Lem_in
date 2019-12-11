@@ -177,6 +177,33 @@ algo_calc_input_output.c.s:
 	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_calc_input_output.c.s
 .PHONY : algo_calc_input_output.c.s
 
+algo_check_from_end_sort_childs_of_end.o: algo_check_from_end_sort_childs_of_end.c.o
+
+.PHONY : algo_check_from_end_sort_childs_of_end.o
+
+# target to build an object file
+algo_check_from_end_sort_childs_of_end.c.o:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_check_from_end_sort_childs_of_end.c.o
+.PHONY : algo_check_from_end_sort_childs_of_end.c.o
+
+algo_check_from_end_sort_childs_of_end.i: algo_check_from_end_sort_childs_of_end.c.i
+
+.PHONY : algo_check_from_end_sort_childs_of_end.i
+
+# target to preprocess a source file
+algo_check_from_end_sort_childs_of_end.c.i:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_check_from_end_sort_childs_of_end.c.i
+.PHONY : algo_check_from_end_sort_childs_of_end.c.i
+
+algo_check_from_end_sort_childs_of_end.s: algo_check_from_end_sort_childs_of_end.c.s
+
+.PHONY : algo_check_from_end_sort_childs_of_end.s
+
+# target to generate assembly for a file
+algo_check_from_end_sort_childs_of_end.c.s:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_check_from_end_sort_childs_of_end.c.s
+.PHONY : algo_check_from_end_sort_childs_of_end.c.s
+
 algo_del_child.o: algo_del_child.c.o
 
 .PHONY : algo_del_child.o
@@ -284,6 +311,33 @@ algo_prepare.s: algo_prepare.c.s
 algo_prepare.c.s:
 	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_prepare.c.s
 .PHONY : algo_prepare.c.s
+
+algo_search_path.o: algo_search_path.c.o
+
+.PHONY : algo_search_path.o
+
+# target to build an object file
+algo_search_path.c.o:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_search_path.c.o
+.PHONY : algo_search_path.c.o
+
+algo_search_path.i: algo_search_path.c.i
+
+.PHONY : algo_search_path.i
+
+# target to preprocess a source file
+algo_search_path.c.i:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_search_path.c.i
+.PHONY : algo_search_path.c.i
+
+algo_search_path.s: algo_search_path.c.s
+
+.PHONY : algo_search_path.s
+
+# target to generate assembly for a file
+algo_search_path.c.s:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/algo_search_path.c.s
+.PHONY : algo_search_path.c.s
 
 bfs.o: bfs.c.o
 
@@ -717,33 +771,6 @@ print.c.s:
 	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/print.c.s
 .PHONY : print.c.s
 
-search_path.o: search_path.c.o
-
-.PHONY : search_path.o
-
-# target to build an object file
-search_path.c.o:
-	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/search_path.c.o
-.PHONY : search_path.c.o
-
-search_path.i: search_path.c.i
-
-.PHONY : search_path.i
-
-# target to preprocess a source file
-search_path.c.i:
-	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/search_path.c.i
-.PHONY : search_path.c.i
-
-search_path.s: search_path.c.s
-
-.PHONY : search_path.s
-
-# target to generate assembly for a file
-search_path.c.s:
-	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/search_path.c.s
-.PHONY : search_path.c.s
-
 validator.o: validator.c.o
 
 .PHONY : validator.o
@@ -840,6 +867,9 @@ help:
 	@echo "... algo_calc_input_output.o"
 	@echo "... algo_calc_input_output.i"
 	@echo "... algo_calc_input_output.s"
+	@echo "... algo_check_from_end_sort_childs_of_end.o"
+	@echo "... algo_check_from_end_sort_childs_of_end.i"
+	@echo "... algo_check_from_end_sort_childs_of_end.s"
 	@echo "... algo_del_child.o"
 	@echo "... algo_del_child.i"
 	@echo "... algo_del_child.s"
@@ -852,6 +882,9 @@ help:
 	@echo "... algo_prepare.o"
 	@echo "... algo_prepare.i"
 	@echo "... algo_prepare.s"
+	@echo "... algo_search_path.o"
+	@echo "... algo_search_path.i"
+	@echo "... algo_search_path.s"
 	@echo "... bfs.o"
 	@echo "... bfs.i"
 	@echo "... bfs.s"
@@ -900,9 +933,6 @@ help:
 	@echo "... print.o"
 	@echo "... print.i"
 	@echo "... print.s"
-	@echo "... search_path.o"
-	@echo "... search_path.i"
-	@echo "... search_path.s"
 	@echo "... validator.o"
 	@echo "... validator.i"
 	@echo "... validator.s"
