@@ -30,6 +30,6 @@ int main()
 	if (get_path(&data, array, paths) == -1)
 		return (ft_free(&data, &array, &paths));
 	print_ants_rooms_links(&data);
-    ft_first(&data, array, paths, NULL); // t_ant	*ant; почистить и exit c malloc
+	move_ants(&data, array, paths, NULL); // t_ant	*ant; почистить и exit c malloc
     return (ft_free(&data, &array, &paths));
 }

@@ -92,7 +92,7 @@ int					bfs(t_data *data, t_room **array, int **queue);
 int					fill_array_rooms(t_data *data, t_room **array);
 int					algo_prepare_graph(t_data *data, t_room **array, int **queue);
 int					get_path(t_data *data, t_room **array, int **paths);
-void 				ft_first(t_data *data, t_room **array, int **paths, t_ant *ant);
+void 				move_ants(t_data *data, t_room **array, int **paths, t_ant *ant);
 int 				ft_free(t_data *data, t_room ***array, int ***numbers);
 
 int					get_next_line(const int fd, char **line);

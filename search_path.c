@@ -1,4 +1,4 @@
-/
+
 #include "validator.h"
 
 static void sort_childs(t_room **array, t_room *end, t_child *parent)
@@ -38,7 +38,6 @@ static int create_path(t_data *data, int **path, t_room **array, int max, t_chil
 {
 	int 	i;
 	t_room	*temp;
-	int 	y;
 
 	if (((*path) = (int*)malloc(sizeof(int) * (max + 4))) == NULL)
 		return (-1);

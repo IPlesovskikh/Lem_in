@@ -1,7 +1,7 @@
 
 #include "validator.h"
 
-t_ant	*ft_create_ant(int i, int k, t_ant *prev_ant)
+static t_ant	*ft_create_ant(int i, int k, t_ant *prev_ant)
 {
 	t_ant	*ant;
 
@@ -24,31 +24,10 @@ t_ant	*ft_create_ant(int i, int k, t_ant *prev_ant)
 	return (ant);
 }
 
-void 	ft_first(t_data *data, t_room **array, int **paths, t_ant *ant)
+t_ant	*ft_move(t_ant *ant, int **paths, t_room **array)
 {
-	int			i;
-	int 		j;
-	int 		sum;
 	t_ant		*tmp;
 
-	i = 0;
-	j = 0;
-	sum = 0;
-	while (data->ants > 0 && i < data->total_paths && data->ants > sum)
-	{
-		while (j < i)
-		{
-			sum = sum + (paths[j + 1][0] - paths[j][0]);
-			j++;
-		}
-		if (data->ants > sum)
-		{
-			ant = ft_create_ant(i, data->k, ant);
-			data->ants--;
-			i++;
-			data->k++;
-		}
-	}
 	while (ant->prev != NULL)
 		ant = ant->prev;
 	while (ant->next != NULL)
@@ -70,41 +49,82 @@ void 	ft_first(t_data *data, t_room **array, int **paths, t_ant *ant)
 			free(tmp);
 		}
 	}
+	return (ant);
+}
+
+static t_ant	*choose_path(t_data *data, t_ant * ant, int **paths)
+{
+	int			i;
+	int 		j;
+	int 		sum;
+
+	i = 0;
+	j = 0;
+	sum = 0;
+	while (data->ants > 0 && i < data->total_paths && data->ants > sum)
+	{
+		while (j < i)
+		{
+			sum = sum + (paths[j + 1][0] - paths[j][0]);
+			j++;
+		}
+		if (data->ants > sum)
+		{
+			ant = ft_create_ant(i, data->k, ant);
+			data->ants--;
+			i++;
+			data->k++;
+		}
+	}
+	return (ant);
+}
+
+t_ant	*ft_check_ant(t_ant *ant)
+{
+	t_ant		*tmp;
+
+	if (ant != NULL && ant->next != NULL)
+	{
+		tmp = ant;
+		ant = ant->next;
+		if (ant != NULL)
+			ant->prev = tmp->prev;
+		if (tmp->prev != NULL)
+			(tmp->prev)->next = ant;
+		free(tmp);
+	}
+	else
+	{
+		tmp = ant;
+		if (ant->prev == NULL && ant->next == NULL)
+		{
+			free(ant);
+			return (NULL);
+		}
+		ant = ant->prev;
+		ant->next = NULL;
+		free(tmp);
+	}
+	return (ant);
+}
+
+void 	move_ants(t_data *data, t_room **array, int **paths, t_ant *ant)
+{
+	ant = choose_path(data, ant, paths);
+	ant = ft_move(ant, paths, array);
 	if (ant->j <= paths[ant->i][0])
 	{
 		printf("L%d-%s ", ant->name, array[paths[ant->i][ant->j]]->name);
 		ant->j++;
 	}
 	else
-	{
-		if (ant != NULL && ant->next != NULL)
-		{
-			tmp = ant;
-			ant = ant->next;
-			if (ant != NULL)
-				ant->prev = tmp->prev;
-			if (tmp->prev != NULL)
-				(tmp->prev)->next = ant;
-			free(tmp);
-		}
-		else
-		{
-			tmp = ant;
-			if (ant->prev == NULL && ant->next == NULL)
-			{
-				free(ant);
-				return ;
-			}
-			ant = ant->prev;
-			ant->next = NULL;
-			free(tmp);
-		}
-	}
+		if ((ant = ft_check_ant(ant)) == NULL)
+			return ;
 	if (ant == NULL)
 		return ;
 	else
 	{
 		printf("\n");
-		ft_first(data, array, paths, ant);
+		move_ants(data, array, paths, ant);
 	}
 }
