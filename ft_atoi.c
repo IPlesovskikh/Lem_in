@@ -12,81 +12,61 @@
 
 #include "validator.h"
 
-static long int	conversion_negative(const char *str, int i)
+static int	ft_isspace(int c)
 {
-	long int		n;
-	long int		y;
-	int				len;
-
-	n = 0;
-	len = i;
-	while (str[i] >= '0' && str[i] <= '9')
-		i++;
-	y = 1;
-	i--;
-	if (str[i] == '-')
+	if (c == 0x20 || c == 0x90 || c == 0x0a || c == (0x0b) ||
+		c == (0x0c) || c == (0x0d) || c == '\t')
+		return (c);
+	else
 		return (0);
-	while (i >= len)
-	{
-		n = n + (str[i] - '0') * y;
-		if (n > 147483648 ||
-			(n == 147483648 && str[i] == 2))
-			return (0);
-		i--;
-		y = 10 * y;
-	}
-	n = -n;
-	return (n);
 }
 
-static long int	conversion_positive(const char *str, int i)
+static int	ft_check(char dig, char sign, long int res)
 {
-	long int	n;
-	long int	y;
-	int			len;
-
-	n = 0;
-	if (str[i] == '+')
-		i++;
-	len = i;
-	while (str[i] >= '0' && str[i] <= '9')
-		i++;
-	y = 1;
-	i--;
-	if (str[i] == '+')
+	if ((sign == '+' && res > 214748364) ||
+		(res == 214748364 && dig > '7'))
 		return (0);
-	while (i >= len && str[i] != '+')
-	{
-		n = n + (str[i] - '0') * y;
-		if (n > 147483648 ||
-			(n == 147483648 && str[i] == 2))
-			return (0);
-		i--;
-		y = 10 * y;
-	}
-	return (n);
+	if ((sign == '-' && res < -214748364) ||
+		(res == -214748364 && dig > '8'))
+		return (0);
+	else
+		return (10);
 }
 
-int				ft_atoi(const char *str)
+static int	ft_result(const char *dig)
 {
-	int			i;
-	long int	n;
+	size_t		i;
+	long int	res;
+	char		sign;
 
 	i = 0;
-	n = 0;
-	while (str[i] != '\0' && (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-	|| str[i] == '\f' || str[i] == '\r' || str[i] == ' '))
-		i++;
-	if (str[i] == '\0')
-		return (0);
-	if (str[i] == '-')
+	res = 0;
+	sign = '+';
+	if (dig[i] == '+' || dig[i] == '-')
 	{
+		sign = dig[i];
 		i++;
-		n = conversion_negative(str, i);
 	}
-	else
+	while (ft_isdigit(dig[i]))
 	{
-		n = conversion_positive(str, i);
+		if (ft_check(dig[i], sign, res) == -1
+			|| ft_check(dig[i], sign, res) == 0)
+			return (ft_check(dig[i], sign, res));
+		if (sign == '-')
+			res = res * 10 - (dig[i] - '0');
+		else
+			res = res * 10 + (dig[i] - '0');
+		i++;
 	}
-	return (int)(n);
+	return (res);
+}
+
+int			ft_atoi(const char *str)
+{
+	size_t		i;
+
+	i = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	return (ft_result(str + i));
 }

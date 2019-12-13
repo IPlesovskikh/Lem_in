@@ -107,33 +107,22 @@ static void		delete_no_one_link(t_data *data, t_room **array, int **queue, int i
 	}
 }
 
-int			algo_prepare_graph(t_data *data,t_room **array,int **queue)
+int			algo_prepare_graph(t_data *data,t_room **array,int ***queue)
 {
-	int 	i;
-
-	del_same_lvl_and_get_directions(data, array, queue, -1);
+	del_same_lvl_and_get_directions(data, array, (*queue), -1);
 	if (data->total_rooms == 2)
-		return (0);
+	{
+		data->end->input++;
+		return (ft_free_queue(&(*queue)));
+	}
     if (data->end->parent == NULL)
 		return (print_error());
-	del_no_lvl(array, queue);
-	calculate_input_and_output(array, queue);
-	delete_no_one_link(data, array, queue, -1);
-	del_input_forks(data, array, 1, queue);
-	delete_no_one_link(data, array, queue, -1);
-	i = 0;
-	if (queue)
-	{
-		while ((queue)[i])
-		{
-			free((queue)[i]);
-			(queue)[i] = NULL;
-			i++;
-		}
-		free(queue);
-		queue = NULL;
-	}
-	return (0);
+	del_no_lvl(array, (*queue));
+	calculate_input_and_output(array, (*queue));
+	delete_no_one_link(data, array, (*queue), -1);
+	del_input_forks(data, array, 1, (*queue));
+	delete_no_one_link(data, array, (*queue), -1);
+	return (ft_free_queue(&(*queue)));
 }
 
 

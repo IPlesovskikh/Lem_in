@@ -9,7 +9,7 @@ static int 		create_path(t_data *data, int **path, t_room **array, int max, t_ch
 	if (((*path) = (int*)malloc(sizeof(int) * (max + 4))) == NULL)
 		return (-1);
 	(*path)[max + 3] = -1;
-	(*path)[0] = max + 2;
+	(*path)[0] = max + 2; // старт нужно считать ?
 	(*path)[1] = data->start->num;
 	(*path)[max + 2] = data->end->num;
 	i = max + 2;

@@ -26,7 +26,7 @@ static void		ft_delete_rooms(t_room **rooms)
 		if ((*rooms)->parent)
 			ft_delete_child((*rooms)->parent);
 		(*rooms)->parent = NULL;
-		if ((*rooms)->parent)
+		if ((*rooms)->child)
 			ft_delete_child((*rooms)->child);
 		(*rooms)->child = NULL;
 		free(*rooms);
@@ -55,6 +55,8 @@ static void 	free_lines(t_lines **line)
 	while (*line)
 	{
 		temp = (*line)->next;
+		free((*line)->line);
+        (*line)->line = NULL;
 		free((*line));
 		(*line) = temp;
 	}
@@ -88,4 +90,28 @@ int		ft_free(t_data *data, t_room ***array, int ***numbers)
 	return (0);
 }
 
+int		ft_clean_buf(char **temp)
+{
+	free(*temp);
+	(*temp) = NULL;
+	return (-3);
+}
 
+int 	ft_free_queue(int ***queue)
+{
+	int 	i;
+
+	i = 0;
+	if (*queue)
+	{
+		while ((*queue)[i])
+		{
+			free((*queue)[i]);
+			(*queue)[i] = NULL;
+			i++;
+		}
+		free(*queue);
+		(*queue) = NULL;
+	}
+	return (0);
+}

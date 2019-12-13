@@ -4,24 +4,31 @@
 
 #include "validator.h"
 
-int		get_ants(t_data	*data, int fd, t_lines **lines)
+int		get_ants(t_data	*data, int fd, t_lines **lines, int i)
 {
-	int 	i;
+	int 	status;
 
+	status = 0;
 	if ((skip_comments(2, data, &(*lines), fd)) == -1)
 		return (-1);
-	i = 0;
+	while ((*lines)->line[i] == '\t' || (*lines)->line[i] == ' ')
+		i++;
 	if ((*lines)->line[i] == '+' || (*lines)->line[i] == '-')
 		i++;
-	while ((*lines)->line[i] != '\0')
+	while (status == 0 && (*lines)->line[i] != '\0')
 	{
 		if (ft_isdigit((*lines)->line[i]) == 0)
-			return(-1);
-		i++;
+			status = -1;
+		else
+			i++;
 	}
-	if ((data->ants = ft_atoi((*lines)->line)) == 0 &&
-		(*lines)->line[0] != '0' && (*lines)->line[1] != '\0')
+	while (((*lines)->line[i] == '\t' || (*lines)->line[i] == ' '))
+		i++;
+	if ((*lines)->line[i] != '\0')
 		return (-1);
+	if ((data->ants = ft_atoi((*lines)->line)) == 0)
+		if ((*lines)->line[0] == '\0' || ((*lines)->line[0] != '0' && (*lines)->line[1] != '\0'))
+			return (-1);
 	return (0);
 }
 
@@ -81,7 +88,7 @@ int				validator(t_data *data, int fd)
 	t_lines		*lines;
 
 	lines = NULL;
-	if (get_ants(data, fd, &lines) == -1 || data->ants < 1)
+	if (get_ants(data, fd, &lines, 0) == -1 || data->ants < 1)
 		return (print_error());
 	if ((lines = get_lines(lines, fd)) == NULL)
 		return (print_error());

@@ -29,8 +29,8 @@ int		skip_comments(int status, t_data *data, t_lines **lines, int fd)
 		{
 			if (((*lines)->next = (t_lines*)malloc(sizeof(t_lines))) == NULL)
 				return (-1);
-			(*lines)->line = line;
 			(*lines) = (*lines)->next;
+			(*lines)->line = line;
 			(*lines)->next = NULL;
 		}
 		else

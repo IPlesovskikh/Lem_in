@@ -56,11 +56,11 @@ static int		ft_get_line(char **save, char **line, int ret)
 		if ((*(*save)) == '\0' || ((*(++(*save))) == '\0'))
 			(*save) = NULL;
 		else
-		{
+        {
 			if (!((*save) = ft_strsub(t, (i + 1), (ft_strlen(t) - i + 1))))
 				return (-1);
 		}
-		free((void*)t);
+		free(t);
 		return (1);
 	}
 	return (0);

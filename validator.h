@@ -90,7 +90,7 @@ int 				get_commande(t_data *data, t_lines **lines);
 int 				get_rooms(int i, int i2, t_data *data, t_lines *lines);
 int					bfs(t_data *data, t_room **array, int **queue);
 int					fill_array_rooms(t_data *data, t_room **array);
-int					algo_prepare_graph(t_data *data, t_room **array, int **queue);
+int					algo_prepare_graph(t_data *data, t_room **array, int ***queue);
 int					get_path(t_data *data, t_room **array, int **paths);
 void 				move_ants(t_data *data, t_room **array, int **paths, t_ant *ant);
 int 				ft_free(t_data *data, t_room ***array, int ***numbers);
@@ -119,5 +119,7 @@ void				del_input_forks(t_data *data, t_room **array, int i, int **queue);
 void				calculate_input_and_output(t_room **array, int **queue);
 void				check_path(t_room **array, int start, t_child *parent, int end);
 void 				sort_childs(t_room **array, t_room *end, t_child *parent);
+int					ft_clean_buf(char **temp);
+int 				ft_free_queue(int ***queue);
 
 #endif //INC_42_LEM_IN_VALIDATOR_H
