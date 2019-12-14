@@ -77,32 +77,29 @@ static void	del_no_lvl(t_room **array, int **queue)
 	}
 }
 
-static void		delete_no_one_link(t_data *data, t_room **array, int **queue, int i)
+void		delete_no_one_link(t_data *data, t_room **array, int **queue, int i)
 {
 	int 	y;
 	t_child	*child;
 	t_child	*temp_parent;
 
-	while (queue[++i][0] != -1)
+	y = -1;
+	while (queue[i][++y] != -1)
 	{
-		y = -1;
-		while (queue[i][++y] != -1)
+		child = array[queue[i][y]]->child;
+		while (child)
 		{
-			child = array[queue[i][y]]->child;
-			while (child)
+			if (array[child->num]->num != data->end->num &&
+				array[child->num]->output == 0)
 			{
-				if (array[child->num]->num != data->end->num &&
-						array[child->num]->output == 0)
-				{
-					temp_parent = array[child->num]->parent;
-					del_child_or_parent(&temp_parent, queue[i][y], array, child->num);
-					array[child->num]->input--;
-					del_child_or_parent(&child, child->num, array, queue[i][y]);
-					array[queue[i][y]]->output--;
-				}
-				else
-					child = child->next;
+				temp_parent = array[child->num]->parent;
+				del_child_or_parent(&temp_parent, queue[i][y], array, child->num);
+				array[child->num]->input--;
+				del_child_or_parent(&child, child->num, array, queue[i][y]);
+				array[queue[i][y]]->output--;
 			}
+			else
+				child = child->next;
 		}
 	}
 }
@@ -119,10 +116,8 @@ int			algo_prepare_graph(t_data *data,t_room **array,int ***queue)
 		return (print_error());
 	del_no_lvl(array, (*queue));
 	calculate_input_and_output(array, (*queue));
-	delete_no_one_link(data, array, (*queue), -1);
+	delete_no_one_link_a(data, array, (*queue), -1);
 	del_input_forks(data, array, 1, (*queue));
-	delete_no_one_link(data, array, (*queue), -1);
+	delete_no_one_link_a(data, array, (*queue), -1);
 	return (ft_free_queue(&(*queue)));
 }
-
-

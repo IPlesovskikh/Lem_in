@@ -1,7 +1,7 @@
 
 #include "validator.h"
 
-static t_ant	*ft_create_ant(int i, int k, t_ant *prev_ant)
+static t_ant	*ft_create_ant(int i, int k, t_ant *prev_ant, int ant_order)
 {
 	t_ant	*ant;
 
@@ -20,7 +20,7 @@ static t_ant	*ft_create_ant(int i, int k, t_ant *prev_ant)
 	}
 	ant->i = i;
 	ant->j = 2;
-	ant->name = k;
+	ant->name = ant_order;
 	return (ant);
 }
 
@@ -61,19 +61,21 @@ static t_ant	*choose_path(t_data *data, t_ant * ant, int **paths)
 	i = 0;
 	j = 0;
 	sum = 0;
-	while (data->ants > 0 && i < data->total_paths && data->ants > sum)
+	while (data->ants_max > data->ants_min && i < data->total_paths &&
+		(data->ants_max - data->ants_min) > sum)
 	{
 		while (j < i)
 		{
 			sum = sum + (paths[j + 1][0] - paths[j][0]);
 			j++;
 		}
-		if (data->ants > sum)
+		if ((data->ants_max - data->ants_min) > sum)
 		{
-			ant = ft_create_ant(i, data->k, ant);
-			data->ants--;
+			ant = ft_create_ant(i, data->k, ant, data->ant_order);
+			data->ants_max--;
 			i++;
 			data->k++;
+			data->ant_order++;
 		}
 	}
 	return (ant);

@@ -41,51 +41,94 @@ int 	ft_create_link(t_link **temp_link, t_data *data)
 	return (0);
 }
 
-static int		check_rooms(t_data *data, char *temp)
+int		ft_serach_links(const char *checker, const char *checked, int i)
 {
-	t_room 	*check;
-	int 	i;
+	int 	temp;
+	int 	y;
 
-	check = data->rooms;
-	i = 0;
-	while (i == 0 && check)
+	temp = i;
+	y = 0;
+	while (checker[y] != '\0')
 	{
-		if (ft_strcmp(check->name, temp) == 0)
-			i = 1;
-		else
-			check = check->next;
+		if (checker[y] != checked[i])
+			return (temp);
+		i++;
+		y++;
 	}
-	if (i == 0)
-		return (-1);
-	return (check->num);
+	return (i);
 }
 
-int		ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines)
+int		ft_search_room_b(t_link *temp_link, t_data *data, t_lines *lines, int i)
 {
-	char 	*temp;
-	int 	i;
-	int 	i2;
+	t_room		*temp;
+	int 		status;
 
-	i = 0;
-	while (lines->line[i] != '\0' && lines->line[i] != '-')
-		i++;
-	if (lines->line[i] == '\0')
-		return (-1);
-	if ((temp = ft_strsub(lines->line, 0, i)) == NULL)
-		return (-1);
-	if ((temp_link->a = check_rooms(data, temp)) == -1)
-		return (ft_clean_buf(&temp));
-	free(temp);
-	i++;
-	i2 = i;
-	while (lines->line[i] != '\0')
-		i++;
-	if ((temp = ft_strsub(lines->line, i2, i - i2)) == NULL)
-		return (-1);
-	if ((temp_link->b = check_rooms(data, temp)) == -1)
-		return (ft_clean_buf(&temp));
-	free(temp);
-	return (0);
+	temp = data->rooms;
+	status = i;
+	while (status != -1 && temp)
+	{
+		status = i;
+		if (((i = ft_serach_links(temp->name, lines->line, i))) == status)
+			temp = temp->next;
+		else
+		{
+			if (lines->line[i] == '\0')
+			{
+				temp_link->b = temp->num;
+				return (0);
+			}
+			else
+			{
+				temp = temp->next;
+				i = status;
+			}
+		}
+	}
+	return (-3);
+}
+
+int		ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines, int i)
+{
+	t_room		*temp;
+	int 		status;
+
+	temp = data->rooms;
+	status = 0;
+	while (status != -1 && temp)
+	{
+		status = i;
+		if (((i = ft_serach_links(temp->name, lines->line, i))) == status)
+			temp = temp->next;
+		else
+		{
+			if (lines->line[i] == '-')
+			{
+				temp_link->a = temp->num;
+				status = -1;
+			}
+			else
+			{
+				temp = temp->next;
+				i = 0;
+			}
+		}
+	}
+	return ((status == -1) ? ft_search_room_b(temp_link, data, lines, i + 1) : -3);
+}
+
+void	free_temp_link(t_link **temp_link)
+{
+	if ((*temp_link)->prev)
+	{
+		(*temp_link) = (*temp_link)->prev;
+		free((*temp_link)->next);
+		(*temp_link)->next = NULL;
+	}
+	else
+	{
+		free(*temp_link);
+		(*temp_link) = NULL;
+	}
 }
 
 int		get_links(t_data *data, t_lines *lines)
@@ -101,13 +144,10 @@ int		get_links(t_data *data, t_lines *lines)
 		{
 			if ((ft_create_link(&temp_link, data)) == -1)
 				return (-1);
-			if ((i = ft_fill_link(temp_link, data, lines)) == -1)
-				return (-1);
+			i = ft_fill_link(temp_link, data, lines, 0);
 			if (i == -3 || ((check_links(data->links, temp_link)) == -4))
 			{
-				temp_link = temp_link->prev;
-				free(temp_link->next);
-				temp_link->next = NULL;
+				free_temp_link(&temp_link);
 				if (i == -3)
 					return (-3);
 			}

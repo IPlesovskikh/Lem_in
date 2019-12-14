@@ -41,32 +41,34 @@ static void		delete_fork(t_room **array, int i, t_child *parent)
 	}
 }
 
-void		del_input_forks(t_data *data, t_room **array, int i, int **queue)
+static void 		ft_search_del_fork(t_data *data, t_room **array, int i, int **queue)
 {
-	int 	y;
 	t_child	*parent;
 	int 	status;
+	int 	y;
 
 	status = 0;
-	while (queue[++i][0] != -1)
+	y = -1;
+	while (queue[i][++y] != -1)
 	{
-		y = -1;
-		while (queue[i][++y] != -1)
+		if (array[queue[i][y]]->num != data->end->num && array[queue[i][y]]->input > 1)
 		{
-			if (array[queue[i][y]]->num != data->end->num
-				&& array[queue[i][y]]->input > 1)
+			parent = array[queue[i][y]]->parent;
+			while (status == 0 && parent)
 			{
-				parent = array[queue[i][y]]->parent;
-				while (status == 0 && parent)
-				{
-					if (search_no_input_forks(data, array, parent) == 0)
-						parent = parent->next;
-					else
-						status = 1;
-				}
-				(status == 1) ? delete_fork(array, queue[i][y], parent) :
-					delete_fork(array, queue[i][y], array[queue[i][y]]->parent);
+				if (search_no_input_forks(data, array, parent) == 0)
+					parent = parent->next;
+				else
+					status = 1;
 			}
+			(status == 1) ? delete_fork(array, queue[i][y], parent) :
+			delete_fork(array, queue[i][y], array[queue[i][y]]->parent);
 		}
 	}
+}
+
+void		del_input_forks(t_data *data, t_room **array, int i, int **queue)
+{
+	while (queue[++i][0] != -1)
+		ft_search_del_fork(data, array, i, queue);
 }

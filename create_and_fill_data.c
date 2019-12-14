@@ -12,6 +12,9 @@ void    fill_data(t_data *data)
 	data->k = 1;
 	data->order = 0;
 	data->first_line_print = NULL;
+	data->ant_order = 1;
+	data->ants_max = 0;
+	data->ants_min = 0;
 }
 
 int 	ft_create_queue(t_data *data, int ***queue)

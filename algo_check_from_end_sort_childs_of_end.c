@@ -60,6 +60,3 @@ void		check_path(t_room **array, int start, t_child *parent, int end)
 }
 
 
-
-
-

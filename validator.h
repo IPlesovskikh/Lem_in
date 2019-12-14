@@ -63,6 +63,8 @@ typedef struct		s_lines
 typedef struct		s_data
 {
 	int				ants;
+	int 			ants_max;
+	int 			ants_min;
 	t_link			*links;
 	t_room			*rooms;
 	t_room			*start;
@@ -70,6 +72,7 @@ typedef struct		s_data
 	int				total_rooms;
 	int 			total_paths;
 	int 			k;
+	int 			ant_order;
 	int 			order; // это надо ?
 	t_lines 		*first_line_print;
 }					t_data;
@@ -84,7 +87,7 @@ typedef struct		s_list
 int		        	validator(t_data *data, int fd);
 int					check_links(t_link *link, t_link *temp_link);
 int					ft_create_link(t_link **temp_link, t_data *data);
-int					ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines);
+int					ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines, int i);
 int					get_links(t_data *data, t_lines *lines);
 int 				get_commande(t_data *data, t_lines **lines);
 int 				get_rooms(int i, int i2, t_data *data, t_lines *lines);
@@ -94,7 +97,6 @@ int					algo_prepare_graph(t_data *data, t_room **array, int ***queue);
 int					get_path(t_data *data, t_room **array, int **paths);
 void 				move_ants(t_data *data, t_room **array, int **paths, t_ant *ant);
 int 				ft_free(t_data *data, t_room ***array, int ***numbers);
-
 int					get_next_line(const int fd, char **line);
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlen(const char *s);
@@ -109,6 +111,8 @@ int					ft_check_comment(t_lines **lines);
 int					create_array_rooms(t_data *data, t_room ***array);
 void	            del_child_or_parent(t_child	**child, int y, t_room **array, int i);
 int 				print_error(void);
+void  				move_ant(t_data *data, t_room **array, int **paths);
+void 				start_move(t_data *data, int *max, int *min);
 void 				print_ants_rooms_links(t_data *data);
 void    			fill_data(t_data *data);
 int 				ft_create_queue(t_data *data, int ***queue);
@@ -121,5 +125,7 @@ void				check_path(t_room **array, int start, t_child *parent, int end);
 void 				sort_childs(t_room **array, t_room *end, t_child *parent);
 int					ft_clean_buf(char **temp);
 int 				ft_free_queue(int ***queue);
+void				delete_no_one_link_a(t_data *data, t_room **array, int **queue, int i);
+void				delete_no_one_link(t_data *data, t_room **array, int **queue, int i);
 
-#endif //INC_42_LEM_IN_VALIDATOR_H
+#endif

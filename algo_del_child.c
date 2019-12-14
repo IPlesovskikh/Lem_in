@@ -41,3 +41,8 @@ void			del_child_or_parent(t_child	**child, int y, t_room **array, int i)
 	(*child) = temp;
 }
 
+void		delete_no_one_link_a(t_data *data, t_room **array, int **queue, int i)
+{
+	while (queue[++i][0] != -1)
+		delete_no_one_link(data, array, queue, i);
+}

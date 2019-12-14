@@ -6,7 +6,7 @@
 
 int 	print_error(void)
 {
-	printf("ERROR");
+	printf("ERROR\n");
 	return (-1);
 }
 

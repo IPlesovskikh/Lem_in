@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "validator.h"
 
-
 int main()
 {
     t_data  data;
@@ -28,6 +27,6 @@ int main()
 			get_path(&data, array, paths) == -1)
 		return (ft_free(&data, &array, &queue));
 	print_ants_rooms_links(&data);
-	move_ants(&data, array, paths, NULL); // t_ant	*ant; почистить и exit c malloc
+	move_ant(&data, array, paths);
     return (ft_free(&data, &array, &paths));
 }

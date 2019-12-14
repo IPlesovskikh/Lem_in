@@ -46,3 +46,37 @@ int		skip_comments(int status, t_data *data, t_lines **lines, int fd)
 		return (-1);
 	return (0);
 }
+
+void 	start_move(t_data *data, int *max, int *min)
+{
+	if (data->k > 1)
+		data->k -= 65000;
+	if (data->ants > *max)
+	{
+		data->ants_max = *max;
+		data->ants_min = *min;
+		data->ants -= 65000;
+		*max += 65000;
+		*min += 65000;
+	}
+	else
+	{
+		data->ants_max = data->ants;
+		data->ants_min = 0;
+		data->ants = 0;
+	}
+}
+
+void  move_ant(t_data *data, t_room **array, int **paths)
+{
+	int 	max;
+	int 	min;
+
+	max = 65000;
+	min = 0;
+	while (data->ants)
+	{
+		start_move(data, &max, &min);
+		move_ants(data, array, paths, NULL);
+	}
+}

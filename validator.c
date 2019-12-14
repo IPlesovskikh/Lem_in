@@ -80,6 +80,8 @@ static int		parse(t_data *data, t_lines *lines, int i)
 	if (i == -2 || data->rooms == NULL || data->start == NULL ||
 	data->end == NULL || get_links(data, lines) == -1 || data->links == NULL)
 		return (-1);
+	if (data->ants > 261000)
+		data->ants = 261000;
 	return (0);
 }
 
