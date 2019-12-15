@@ -90,7 +90,7 @@ int					ft_create_link(t_link **temp_link, t_data *data);
 int					ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines, int i);
 int					get_links(t_data *data, t_lines *lines);
 int 				get_commande(t_data *data, t_lines **lines);
-int 				get_rooms(int i, int i2, t_data *data, t_lines *lines);
+int 				get_rooms(int i, t_data *data, t_lines *lines);
 int					bfs(t_data *data, t_room **array, int **queue);
 int					fill_array_rooms(t_data *data, t_room **array);
 int					algo_prepare_graph(t_data *data, t_room **array, int ***queue);
@@ -127,5 +127,8 @@ int					ft_clean_buf(char **temp);
 int 				ft_free_queue(int ***queue);
 void				delete_no_one_link_a(t_data *data, t_room **array, int **queue, int i);
 void				delete_no_one_link(t_data *data, t_room **array, int **queue, int i);
+void				free_temp_link(t_link **temp_link, t_data *data);
+int 				get_y(int *i, t_room *temp, t_lines *lines);
+int 				get_x(int *i, t_room *temp, t_lines *lines);
 
 #endif

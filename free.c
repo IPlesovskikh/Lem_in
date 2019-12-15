@@ -89,29 +89,3 @@ int		ft_free(t_data *data, t_room ***array, int ***numbers)
 	}
 	return (0);
 }
-
-int		ft_clean_buf(char **temp)
-{
-	free(*temp);
-	(*temp) = NULL;
-	return (-3);
-}
-
-int 	ft_free_queue(int ***queue)
-{
-	int 	i;
-
-	i = 0;
-	if (*queue)
-	{
-		while ((*queue)[i])
-		{
-			free((*queue)[i]);
-			(*queue)[i] = NULL;
-			i++;
-		}
-		free(*queue);
-		(*queue) = NULL;
-	}
-	return (0);
-}

@@ -447,6 +447,33 @@ free.c.s:
 	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/free.c.s
 .PHONY : free.c.s
 
+free_add.o: free_add.c.o
+
+.PHONY : free_add.o
+
+# target to build an object file
+free_add.c.o:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/free_add.c.o
+.PHONY : free_add.c.o
+
+free_add.i: free_add.c.i
+
+.PHONY : free_add.i
+
+# target to preprocess a source file
+free_add.c.i:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/free_add.c.i
+.PHONY : free_add.c.i
+
+free_add.s: free_add.c.s
+
+.PHONY : free_add.s
+
+# target to generate assembly for a file
+free_add.c.s:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/free_add.c.s
+.PHONY : free_add.c.s
+
 ft_atoi.o: ft_atoi.c.o
 
 .PHONY : ft_atoi.o
@@ -798,6 +825,33 @@ validator.c.s:
 	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator.c.s
 .PHONY : validator.c.s
 
+validator_get_coordinates.o: validator_get_coordinates.c.o
+
+.PHONY : validator_get_coordinates.o
+
+# target to build an object file
+validator_get_coordinates.c.o:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_get_coordinates.c.o
+.PHONY : validator_get_coordinates.c.o
+
+validator_get_coordinates.i: validator_get_coordinates.c.i
+
+.PHONY : validator_get_coordinates.i
+
+# target to preprocess a source file
+validator_get_coordinates.c.i:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_get_coordinates.c.i
+.PHONY : validator_get_coordinates.c.i
+
+validator_get_coordinates.s: validator_get_coordinates.c.s
+
+.PHONY : validator_get_coordinates.s
+
+# target to generate assembly for a file
+validator_get_coordinates.c.s:
+	$(MAKE) -f CMakeFiles/lem-in.dir/build.make CMakeFiles/lem-in.dir/validator_get_coordinates.c.s
+.PHONY : validator_get_coordinates.c.s
+
 validator_links.o: validator_links.c.o
 
 .PHONY : validator_links.o
@@ -897,6 +951,9 @@ help:
 	@echo "... free.o"
 	@echo "... free.i"
 	@echo "... free.s"
+	@echo "... free_add.o"
+	@echo "... free_add.i"
+	@echo "... free_add.s"
 	@echo "... ft_atoi.o"
 	@echo "... ft_atoi.i"
 	@echo "... ft_atoi.s"
@@ -936,6 +993,9 @@ help:
 	@echo "... validator.o"
 	@echo "... validator.i"
 	@echo "... validator.s"
+	@echo "... validator_get_coordinates.o"
+	@echo "... validator_get_coordinates.i"
+	@echo "... validator_get_coordinates.s"
 	@echo "... validator_links.o"
 	@echo "... validator_links.i"
 	@echo "... validator_links.s"

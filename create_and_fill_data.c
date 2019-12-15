@@ -62,3 +62,28 @@ void	ft_fill_room(t_room *room)
 	room->child = NULL;
 	room->parent = NULL;
 }
+
+int 	ft_create_link(t_link **temp_link, t_data *data)
+{
+	t_link	*temp;
+
+	if (data->links)
+	{
+		if ((temp = (t_link*)malloc(sizeof(t_link))) == NULL)
+			return (-1);
+		(*temp_link)->next = temp;
+		(*temp_link)->next->prev = (*temp_link);
+		(*temp_link) = (*temp_link)->next;
+	}
+	else
+	{
+		if ((data->links = (t_link*)malloc(sizeof(t_link))) == NULL)
+			return (-1);
+		(*temp_link) = data->links;
+		(*temp_link)->prev = NULL;
+	}
+	(*temp_link)->next = NULL;
+	(*temp_link)->a = -1;
+	(*temp_link)->b = -1;
+	return (0);
+}

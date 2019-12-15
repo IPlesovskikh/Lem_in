@@ -29,6 +29,8 @@ int		get_ants(t_data	*data, int fd, t_lines **lines, int i)
 	if ((data->ants = ft_atoi((*lines)->line)) == 0)
 		if ((*lines)->line[0] == '\0' || ((*lines)->line[0] != '0' && (*lines)->line[1] != '\0'))
 			return (-1);
+	if (data->ants > 261000)
+		return (rev());
 	return (0);
 }
 
@@ -69,7 +71,7 @@ static int		parse(t_data *data, t_lines *lines, int i)
 		}
 		else if (lines->line[0] != '#')
 		{
-			if (get_rooms(0, 0, data, lines) == -1)
+			if (get_rooms(0, data, lines) == -1)
 				i = -1;
 			else
                 lines = lines->next;
@@ -80,8 +82,6 @@ static int		parse(t_data *data, t_lines *lines, int i)
 	if (i == -2 || data->rooms == NULL || data->start == NULL ||
 	data->end == NULL || get_links(data, lines) == -1 || data->links == NULL)
 		return (-1);
-	if (data->ants > 261000)
-		data->ants = 261000;
 	return (0);
 }
 

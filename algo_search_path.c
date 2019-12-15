@@ -1,11 +1,13 @@
 
 #include "validator.h"
 
-static int 		create_path(t_data *data, int **path, t_room **array, int max, t_child *parent)
+static int 		create_path(t_data *data, int **path, t_room **array, t_child *parent)
 {
 	int 	i;
 	t_room	*temp;
+	int 	max;
 
+	max = array[parent->num]->level;
 	if (((*path) = (int*)malloc(sizeof(int) * (max + 4))) == NULL)
 		return (-1);
 	(*path)[max + 3] = -1;
@@ -72,19 +74,19 @@ int			get_path(t_data *data, t_room **array, int **paths)
 	int 	i;
 
 	check_path(array, data->start->num, data->end->parent, data->end->num);
+	if (!data->end->parent)
+		return (print_error());
 	if (data->end->parent->next)
 		sort_childs(array, data->end, data->end->parent);
 	i = 0;
 	parent = data->end->parent;
-	if ((create_path(data, &(paths[i]), array,
-			array[parent->num]->level, parent)) == -1)
+	if ((create_path(data, &(paths[i]), array, parent)) == -1)
 		return (print_error());
 	parent = parent->next;
 	while (parent)
 	{
 		if ((iteration_get_path(array, paths, parent, i)) == 1)
-			if ((create_path(data, &(paths[++i]),
-					array, array[parent->num]->level, parent)) == -1)
+			if ((create_path(data, &(paths[++i]), array, parent)) == -1)
 				return (print_error());
 		parent = parent->next;
 	}

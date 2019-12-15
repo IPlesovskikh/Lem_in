@@ -16,31 +16,6 @@ int		check_links(t_link *link, t_link *temp_link)
 	return (0);
 }
 
-int 	ft_create_link(t_link **temp_link, t_data *data)
-{
-	t_link	*temp;
-
-	if (data->links)
-	{
-		if ((temp = (t_link*)malloc(sizeof(t_link))) == NULL)
-			return (-1);
-		(*temp_link)->next = temp;
-		(*temp_link)->next->prev = (*temp_link);
-		(*temp_link) = (*temp_link)->next;
-	}
-	else
-	{
-		if ((data->links = (t_link*)malloc(sizeof(t_link))) == NULL)
-			return (-1);
-		(*temp_link) = data->links;
-		(*temp_link)->prev = NULL;
-	}
-	(*temp_link)->next = NULL;
-	(*temp_link)->a = -1;
-	(*temp_link)->b = -1;
-	return (0);
-}
-
 int		ft_serach_links(const char *checker, const char *checked, int i)
 {
 	int 	temp;
@@ -116,21 +91,6 @@ int		ft_fill_link(t_link *temp_link, t_data *data, t_lines *lines, int i)
 	return ((status == -1) ? ft_search_room_b(temp_link, data, lines, i + 1) : -3);
 }
 
-void	free_temp_link(t_link **temp_link)
-{
-	if ((*temp_link)->prev)
-	{
-		(*temp_link) = (*temp_link)->prev;
-		free((*temp_link)->next);
-		(*temp_link)->next = NULL;
-	}
-	else
-	{
-		free(*temp_link);
-		(*temp_link) = NULL;
-	}
-}
-
 int		get_links(t_data *data, t_lines *lines)
 {
 	t_link	*temp_link;
@@ -147,11 +107,14 @@ int		get_links(t_data *data, t_lines *lines)
 			i = ft_fill_link(temp_link, data, lines, 0);
 			if (i == -3 || ((check_links(data->links, temp_link)) == -4))
 			{
-				free_temp_link(&temp_link);
+				free_temp_link(&temp_link, data);
 				if (i == -3)
 					return (-3);
 			}
 		}
+		else if ((ft_strcmp(&(lines->line[0]), "##start") == 0) ||
+				(ft_strcmp(&(lines->line[0]), "##end") == 0))
+			return (-1);
 		lines = lines->next;
 	}
 	return (0);

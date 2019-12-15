@@ -30,7 +30,7 @@ static void	del_same_lvl_and_get_directions(t_data *data, t_room **array, int **
 	t_child	*child;
 
 	while (queue[++i][0] != -1)
-	{
+	{;
 		y = -1;
 		while (queue[i][++y] != -1)
 		{
